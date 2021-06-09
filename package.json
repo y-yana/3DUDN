@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@pixiv/three-vrm": "^0.6.4",
+    "@types/three": "^0.126.2",
+    "three": "^0.126.1",
+    "typescript": "^4.3.2"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.2.3",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack serve --open"
+  }
+}
