@@ -1,6 +1,10 @@
 # 3DUDN
 ## vol4!!!!
-## 制作メンバー
+## &#x1f60e; 制作メンバー
 - Yuuna Yanagida
 - Leon Kunishi
 - Ryunosuke Ikeda
+## &#x1f527; build
+```
+$ npm run build
+```
