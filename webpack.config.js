@@ -1,22 +1,50 @@
 const path = require('path');
 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 module.exports = {
     mode: 'development',
-    entry: './src/index.ts',
+    entry: './src/entry/js/index.js',
 
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'src/static/js')
+        path: path.resolve(__dirname, 'src/static')
     },
 
     module: {
         rules: [
+            // TypeScript
             {
                 test: /.(ts|tsx)?$/,
                 loader: 'ts-loader',
-                include: [path.resolve(__dirname, 'src')],
+                include: [path.resolve(__dirname, 'src/entry')],
                 exclude: [/node_modules/]
-            }
+            },
+            // Sass
+            {
+                test: /\.scss/, // 対象となるファイルの拡張子
+                use: [
+                {
+                    loader: MiniCssExtractPlugin.loader,
+                },
+                // CSSをバンドルするための機能
+                {
+                    loader: "css-loader",
+                    options: {
+                    // オプションでCSS内のurl()メソッドの取り込みを禁止する
+                    url: false,
+
+                    // 0 => no loaders (default);
+                    // 1 => postcss-loader;
+                    // 2 => postcss-loader, sass-loader
+                    importLoaders: 2
+                    }
+                },
+                {
+                    loader: "sass-loader",
+                },
+                ],
+            },
         ]
     },
 
@@ -31,5 +59,12 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
         modules: ["node_modules"]
-    }
+    },
+
+    plugins: [
+    new MiniCssExtractPlugin({
+        // 出力ファイル名
+        filename: "style.css",
+    }),
+    ]
 };
