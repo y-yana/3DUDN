@@ -13,7 +13,6 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(canvas.clientWidth, canvas.clientHeight)
 renderer.setPixelRatio(window.devicePixelRatio)
-document.body.appendChild(renderer.domElement)
 
 // カメラの設定
 const camera = new THREE.PerspectiveCamera(
