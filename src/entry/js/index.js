@@ -1,3 +1,8 @@
+// TypeScript
 import '../index.ts';
-import '../style/test.scss'
-import './test.js'
+
+// JavaScript
+import '../js/test.js';
+
+// Sass
+import '../style/test.scss';

@@ -56,7 +56,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.ts */ \"./src/entry/index.ts\");\n/* harmony import */ var _style_test_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../style/test.scss */ \"./src/entry/style/test.scss\");\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './test.js'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n\n\n\n\n\n//# sourceURL=webpack:///./src/entry/style/test.scss?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.ts */ \"./src/entry/index.ts\");\n/* harmony import */ var _js_test_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/test.js */ \"./src/entry/js/test.js\");\n/* harmony import */ var _js_test_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_test_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _style_test_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../style/test.scss */ \"./src/entry/style/test.scss\");\n\n\n\n\n\n//# sourceURL=webpack:///./src/entry/style/test.scss?");
 
 /***/ }),
 
@@ -76,7 +76,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var thre
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.ts */ \"./src/entry/index.ts\");\n/* harmony import */ var _style_test_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../style/test.scss */ \"./src/entry/style/test.scss\");\n/* harmony import */ var _test_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./test.js */ \"./src/entry/js/test.js\");\n/* harmony import */ var _test_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_test_js__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\n\n//# sourceURL=webpack:///./src/entry/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.ts */ \"./src/entry/index.ts\");\n/* harmony import */ var _js_test_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/test.js */ \"./src/entry/js/test.js\");\n/* harmony import */ var _js_test_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_test_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _style_test_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../style/test.scss */ \"./src/entry/style/test.scss\");\n\n\n\n\n\n//# sourceURL=webpack:///./src/entry/js/index.js?");
 
 /***/ }),
 
