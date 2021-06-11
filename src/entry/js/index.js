@@ -1,3 +1,3 @@
 import '../index.ts';
-import '../style/test.scss'
-import './test.js'
+import './test.js';
+import '../style/test.scss';
