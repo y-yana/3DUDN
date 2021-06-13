@@ -2,7 +2,7 @@
 import '../index.ts';
 
 // JavaScript
-import '../js/test.js';
+import '../js/loading.js';
 
 // Sass
-import '../style/test.scss';
+import '../style/index.scss';
