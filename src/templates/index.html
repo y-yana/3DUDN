@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="../static/style.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js"></script>
         <script src="static/main.js"></script>
     </head>
     <body>
@@ -28,6 +29,7 @@
                     class="material-icons">play_arrow</i><span>再開</span></button>
         </div>
         <script>
+            // 音声認識
             window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
                 var recognition = new webkitSpeechRecognition();
                 recognition.lang = 'ja';
@@ -50,6 +52,7 @@
                     document.getElementById("result_text").innerHTML = finalTranscript + interimTranscript;
                 }
 
+                // 再生開始
                 function play() {
                     const text = new SpeechSynthesisUtterance(result_text.value);
                     speechSynthesis.speak(text);
@@ -59,6 +62,7 @@
                     document.getElementById("restart").disabled = true;
                 }
 
+                // 再生停止
                 function stop() {
                     speechSynthesis.cancel();
                     document.getElementById("play").disabled = false;
@@ -67,6 +71,7 @@
                     document.getElementById("restart").disabled = true;
                 }
 
+                // 再生一時停止
                 function halt() {
                     speechSynthesis.pause();
                     document.getElementById("play").disabled = true;
@@ -75,6 +80,7 @@
                     document.getElementById("stop").disabled = false;
                 }
 
+                // 再生再開
                 function restart() {
                     speechSynthesis.resume();
                     document.getElementById("play").disabled = true;
@@ -83,6 +89,7 @@
                     document.getElementById("halt").disabled = false;
                 }
 
+                // リセット
                 function reset() {
                     document.getElementById("result_text").innerHTML = "";
                     finalTranscript = '';
@@ -93,6 +100,7 @@
                     document.getElementById("restart").disabled = true;
                 }
 
+                // 録音開始
                 function recStart() {
                     document.getElementById("blink").innerHTML = '<div id="blinkStart"><i class="material-icons">keyboard_voice</i><span>REC</span></div>';
                     document.getElementById("reset").disabled = true;
@@ -100,12 +108,25 @@
                     document.getElementById("recStart").disabled = true;
                 }
 
+                // 録音停止
                 function recStop() {
                     document.getElementById("blinkStart").innerHTML = '<div id="blink"></div>';
                     document.getElementById("reset").disabled = false;
                     document.getElementById("play").disabled = false;
                     document.getElementById("recStart").disabled = false;
                 }
+
+                // background
+                bubbly({
+                        colorStart: '#6edbff',
+                        colorStop: '#6edbff',
+                        blur: 5,
+                        compose: 'source-over',
+                        bubbles: 80,
+                        velocityFunc: () => Math.random() * 1.3,
+                        radiusFunc: () => Math.random() * 20,
+                        bubbleFunc: () => `hsla(${Math.random() * 360}, 50%, 85%, .18)`
+                    });
         </script>
     </body>
 </html>
