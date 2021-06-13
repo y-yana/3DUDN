@@ -28,6 +28,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    box-sizing: content-box;
     p {
       display: table-cell;
       font-size: 2rem;
@@ -48,6 +49,8 @@
         rgba(10, 175, 230, 0) 90%
       );
       border: 0 dotted rgba(10, 175, 230, 0);
+      box-sizing: content-box;
+      line-height: normal;
     }
     &:before,
     &:after,
