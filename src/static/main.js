@@ -50,13 +50,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/entry/style/test.scss":
-/*!***********************************!*\
-  !*** ./src/entry/style/test.scss ***!
-  \***********************************/
+/***/ "./src/entry/style/index.scss":
+/*!************************************!*\
+  !*** ./src/entry/style/index.scss ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.ts */ \"./src/entry/index.ts\");\n/* harmony import */ var _js_test_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/test.js */ \"./src/entry/js/test.js\");\n/* harmony import */ var _js_test_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_test_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _style_test_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../style/test.scss */ \"./src/entry/style/test.scss\");\n// TypeScript\n\n// JavaScript\n\n// Sass\n\n\n\n//# sourceURL=webpack:///./src/entry/style/test.scss?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.ts */ \"./src/entry/index.ts\");\n/* harmony import */ var _js_loading_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/loading.js */ \"./src/entry/js/loading.js\");\n/* harmony import */ var _js_loading_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_loading_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _style_index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../style/index.scss */ \"./src/entry/style/index.scss\");\n// TypeScript\n\n// JavaScript\n\n// Sass\n\n\n\n//# sourceURL=webpack:///./src/entry/style/index.scss?");
 
 /***/ }),
 
@@ -76,17 +76,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var thre
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.ts */ \"./src/entry/index.ts\");\n/* harmony import */ var _js_test_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/test.js */ \"./src/entry/js/test.js\");\n/* harmony import */ var _js_test_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_test_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _style_test_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../style/test.scss */ \"./src/entry/style/test.scss\");\n// TypeScript\n\n// JavaScript\n\n// Sass\n\n\n\n//# sourceURL=webpack:///./src/entry/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.ts */ \"./src/entry/index.ts\");\n/* harmony import */ var _js_loading_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/loading.js */ \"./src/entry/js/loading.js\");\n/* harmony import */ var _js_loading_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_loading_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _style_index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../style/index.scss */ \"./src/entry/style/index.scss\");\n// TypeScript\n\n// JavaScript\n\n// Sass\n\n\n\n//# sourceURL=webpack:///./src/entry/js/index.js?");
 
 /***/ }),
 
-/***/ "./src/entry/js/test.js":
-/*!******************************!*\
-  !*** ./src/entry/js/test.js ***!
-  \******************************/
+/***/ "./src/entry/js/loading.js":
+/*!*********************************!*\
+  !*** ./src/entry/js/loading.js ***!
+  \*********************************/
 /***/ (() => {
 
-eval("\nconsole.log('HelloWorld');\n\n\n//# sourceURL=webpack:///./src/entry/js/test.js?");
+eval("\nwindow.onload = function () {\n    setTimeout(addLoaded, 3000);\n};\nfunction addLoaded() {\n    var spinner = document.getElementById('loading');\n    spinner.classList.add('loaded');\n}\nwindow.onpageshow = function (event) {\n    if (event.persisted) {\n        window.location.reload();\n    }\n};\n\n\n//# sourceURL=webpack:///./src/entry/js/loading.js?");
 
 /***/ })
 
