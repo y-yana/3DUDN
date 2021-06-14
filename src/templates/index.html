@@ -24,7 +24,7 @@
         <!-- フォームに値を入れても遷移しないようにするため、onsubmitにfalseを返す -->
         <form name="example_form" onsubmit="return false;">
             <!-- 入力値の変更があったらJSの関数を実行する -->
-            <input type="text" id="chatMessage" name="username" placeholder="Write your name">
+            <input type="text" id="chatMessage" name="chatMessage" placeholder="Write message">
             <button onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
         </form>
 
@@ -147,7 +147,7 @@
                     });
 
             function changeHandler(input_value) {
-                const username = $(input_value).serialize();
+                const chatMessage = $(input_value).serialize();
 
                 // 送信メッセージの表示
                 $("#chatLogs").append("<div class='chatLog'>" + input_value.value + "</div>");
@@ -156,7 +156,7 @@
 
                 $.ajax("/show", {
                     type: "post",
-                    data: username,  // POSTでサーバーに送信するデータ
+                    data: chatMessage,  // POSTでサーバーに送信するデータ
                     dataType: "json",
                 }).done(function (data) { // 成功した場合実行される
                     console.log("Ajax通信 成功");
