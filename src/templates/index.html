@@ -74,8 +74,8 @@
 
                 // 再生開始
                 function play() {
-                    const text = new SpeechSynthesisUtterance(chatMessage.value);
-                    speechSynthesis.speak(text);
+                    //const text = new SpeechSynthesisUtterance(chatMessage.value);
+                    //speechSynthesis.speak(text);
                     document.getElementById("play").disabled = true;
                     document.getElementById("stop").disabled = false;
                     document.getElementById("halt").disabled = false;
@@ -169,6 +169,8 @@
 
                     // 受信メッセージの表示
                     $("#chatLogs").append("<div class='chatLog'>" + message + "</div>");
+                    const text = new SpeechSynthesisUtterance(message);
+                    speechSynthesis.speak(text);
 
                 }).fail(function (data) { // 失敗した場合実行される
                     console.log("Ajax通信 失敗");
