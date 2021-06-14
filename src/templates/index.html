@@ -25,13 +25,15 @@
         <form name="example_form" onsubmit="return false;">
             <!-- 入力値の変更があったらJSの関数を実行する -->
             <input type="text" id="chatMessage" name="chatMessage" placeholder="Write message">
+            <input type="button" id="recStart_" class="recordBtn" onclick="recognition.start();recStart();" value="録音開始" />
             <button onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
         </form>
 
         <canvas id="canvas" width="600px" height="600px"></canvas>
+
         <div class="recordingArea">
             <div id="blink"></div>
-            <input type="button" id="recStart" class="recordBtn" onClick="recognition.start();recStart();" value="録音開始" />
+            <input type="button" id="recStart" class="recordBtn" onclick="recognition.start();recStart();" value="録音開始" />
             <input type="button" id="recStop" class="recordBtn" onClick="recognition.stop();recStop();" value="録音終了" />
             <input type="button" id="reset" class="recordBtn" onClick="reset();" value="リセット" />
         </div>
@@ -123,7 +125,7 @@
                     document.getElementById("blink").innerHTML = '<div id="blinkStart"><i class="material-icons">keyboard_voice</i><span>REC</span></div>';
                     document.getElementById("reset").disabled = true;
                     document.getElementById("play").disabled = true;
-                    document.getElementById("recStart").disabled = true;
+                    document.getElementById("recStart_").disabled = true;
                 }
 
                 // 録音停止
@@ -131,7 +133,7 @@
                     document.getElementById("blinkStart").innerHTML = '<div id="blink"></div>';
                     document.getElementById("reset").disabled = false;
                     document.getElementById("play").disabled = false;
-                    document.getElementById("recStart").disabled = false;
+                    document.getElementById("recStart_").disabled = false;
                 }
 
                 // background
