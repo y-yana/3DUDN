@@ -69,12 +69,12 @@
                             interimTranscript = transcript;
                         }
                     }
-                    document.getElementById("result_text").innerHTML = finalTranscript + interimTranscript;
+                    document.getElementById("chatMessage").value = finalTranscript + interimTranscript;
                 }
 
                 // 再生開始
                 function play() {
-                    const text = new SpeechSynthesisUtterance(result_text.value);
+                    const text = new SpeechSynthesisUtterance(chatMessage.value);
                     speechSynthesis.speak(text);
                     document.getElementById("play").disabled = true;
                     document.getElementById("stop").disabled = false;
@@ -111,7 +111,7 @@
 
                 // リセット
                 function reset() {
-                    document.getElementById("result_text").innerHTML = "";
+                    document.getElementById("chatMessage").innerHTML = "";
                     finalTranscript = '';
                     speechSynthesis.cancel();
                     document.getElementById("play").disabled = true;
@@ -155,6 +155,7 @@
                 $("#chatLogs").append("<div class='chatLog'>" + input_value.value + "</div>");
                 // 入力欄の初期化
                 document.getElementById('chatMessage').value = "";
+                finalTranscript = "";
 
                 $.ajax("/show", {
                     type: "post",
