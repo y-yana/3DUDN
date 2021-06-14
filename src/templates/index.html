@@ -7,7 +7,6 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js"></script>
-        <script src="static/main.js"></script>
     </head>
     <body>
         <div id="loading">
@@ -23,37 +22,16 @@
 
         <form name="example_form" onsubmit="return false;">
             <input type="text" id="chatMessage" name="chatMessage" placeholder="Write message">
-            <input type="button" id="recStart_" class="recordBtn" onclick="recognition.start()" value="録音開始" />
-            <input type="button" id="recStop_" class="recordBtn" onClick="recognition.stop()" value="録音終了" />
+            <input type="button" id="recStart_" class="recordBtn" value="録音開始" />
+            <input type="button" id="recStop_" class="recordBtn" value="録音終了" />
             <button onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
         </form>
 
         <canvas id="canvas" width="600px" height="600px"></canvas>
 
+        <script src="static/main.js"></script>
+
         <script>
-            // 音声認識
-            window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-            var recognition = new webkitSpeechRecognition();
-            recognition.lang = 'ja';
-            recognition.continuous = true;
-            recognition.interimResults = true;
-
-            let finalTranscript = '';
-
-            recognition.onresult = function (event) {
-                let interimTranscript = '';
-                for (let i = event.resultIndex; i < event.results.length; i++) {
-                    let transcript = event.results[i][0].transcript;
-                    if (event.results[i].isFinal) {
-                        transcript += "。\n";
-                        finalTranscript += transcript;
-                    } else {
-                        interimTranscript = transcript;
-                    }
-                }
-                document.getElementById("chatMessage").value = finalTranscript + interimTranscript;
-            }
-
 
             // background
             bubbly({
