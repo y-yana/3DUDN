@@ -15,6 +15,15 @@
                 <p>Now Loading...</p>
             </div>
         </div>
+
+        <h1 id="midashi">Hello</h1>
+        <!-- フォームに値を入れても遷移しないようにするため、onsubmitにfalseを返す -->
+        <form name="example_form" onsubmit="return false;">
+            <!-- 入力値の変更があったらJSの関数を実行する -->
+            <input type="text" id="ajaxTest" name="username" placeholder="Write your name">
+            <button onclick="changeHandler(document.getElementById('ajaxTest'))">submit</button>
+        </form>
+
         <canvas id="canvas" width="600px" height="600px"></canvas>
         <div class="recordingArea">
             <div id="blink"></div>
@@ -132,6 +141,25 @@
                         radiusFunc: () => Math.random() * 20,
                         bubbleFunc: () => `hsla(${Math.random() * 360}, 50%, 85%, .18)`
                     });
+
+            function changeHandler(input_value) {
+                const username = $(input_value).serialize();
+                $.ajax("/show", {
+                    type: "post",
+                    data: username,  // POSTでサーバーに送信するデータ
+                    dataType: "json",
+                }).done(function (data) { // 成功した場合実行される
+                    console.log("Ajax通信 成功");
+
+                    // POSTリクエストの結果を受け取ってHTMLを書き換える
+                    const message = JSON.parse(data.values).message
+                    // document.getElementById("midashi").innerHTML = message; と同義
+                    $("#midashi").html(message);
+
+                }).fail(function (data) { // 失敗した場合実行される
+                    console.log("Ajax通信 失敗");
+                });
+            }
         </script>
     </body>
 </html>
