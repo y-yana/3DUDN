@@ -7,7 +7,6 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js"></script>
-        <script src="static/main.js"></script>
     </head>
     <body>
         <div id="loading">
@@ -21,131 +20,33 @@
             </div>
         </div>
 
-        <!-- フォームに値を入れても遷移しないようにするため、onsubmitにfalseを返す -->
         <form name="example_form" onsubmit="return false;">
-            <!-- 入力値の変更があったらJSの関数を実行する -->
             <input type="text" id="chatMessage" name="chatMessage" placeholder="Write message">
+            <input type="button" id="recStart_" class="recordBtn" value="録音開始" />
+            <input type="button" id="recStop_" class="recordBtn" value="録音終了" />
             <button onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
         </form>
 
         <canvas id="canvas" width="600px" height="600px"></canvas>
-        <div class="recordingArea">
-            <div id="blink"></div>
-            <input type="button" id="recStart" class="recordBtn" onClick="recognition.start();recStart();" value="録音開始" />
-            <input type="button" id="recStop" class="recordBtn" onClick="recognition.stop();recStop();" value="録音終了" />
-            <input type="button" id="reset" class="recordBtn" onClick="reset();" value="リセット" />
-        </div>
-        <textarea id="result_text" cols="70" rows="7" readonly></textarea>
-        <div class="playArea">
-            <button id="play" class="playBtn" onClick="play()" disabled><i
-                    class="material-icons">headset</i><span>再生開始</span></button>
-            <button id="stop" class="playBtn" onClick="stop()" disabled><i
-                    class="material-icons">stop</i><span>再生終了</span></button>
-            <button id="halt" class="playBtn" onClick="halt()" disabled><i
-                    class="material-icons">pause</i><span>一時停止</span></button>
-            <button id="restart" class="playBtn" onClick="restart()" disabled><i
-                    class="material-icons">play_arrow</i><span>再開</span></button>
-        </div>
+
+        <script src="static/main.js"></script>
+
         <script>
-            // 音声認識
-            window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-                var recognition = new webkitSpeechRecognition();
-                recognition.lang = 'ja';
-                recognition.continuous = true;
-                recognition.interimResults = true;
 
-                let finalTranscript = '';
+            // background
+            bubbly({
+                    colorStart: '#6edbff',
+                    colorStop: '#6edbff',
+                    blur: 5,
+                    compose: 'source-over',
+                    bubbles: 80,
+                    velocityFunc: () => Math.random() * 1.3,
+                    radiusFunc: () => Math.random() * 20,
+                    bubbleFunc: () => `hsla(${Math.random() * 360}, 50%, 85%, .18)`
+                });
 
-                recognition.onresult = function (event) {
-                    let interimTranscript = '';
-                    for (let i = event.resultIndex; i < event.results.length; i++) {
-                        let transcript = event.results[i][0].transcript;
-                        if (event.results[i].isFinal) {
-                            transcript += "。\n";
-                            finalTranscript += transcript;
-                        } else {
-                            interimTranscript = transcript;
-                        }
-                    }
-                    document.getElementById("result_text").innerHTML = finalTranscript + interimTranscript;
-                }
 
-                // 再生開始
-                function play() {
-                    const text = new SpeechSynthesisUtterance(result_text.value);
-                    speechSynthesis.speak(text);
-                    document.getElementById("play").disabled = true;
-                    document.getElementById("stop").disabled = false;
-                    document.getElementById("halt").disabled = false;
-                    document.getElementById("restart").disabled = true;
-                }
-
-                // 再生停止
-                function stop() {
-                    speechSynthesis.cancel();
-                    document.getElementById("play").disabled = false;
-                    document.getElementById("stop").disabled = true;
-                    document.getElementById("halt").disabled = true;
-                    document.getElementById("restart").disabled = true;
-                }
-
-                // 再生一時停止
-                function halt() {
-                    speechSynthesis.pause();
-                    document.getElementById("play").disabled = true;
-                    document.getElementById("halt").disabled = true;
-                    document.getElementById("restart").disabled = false;
-                    document.getElementById("stop").disabled = false;
-                }
-
-                // 再生再開
-                function restart() {
-                    speechSynthesis.resume();
-                    document.getElementById("play").disabled = true;
-                    document.getElementById("restart").disabled = true;
-                    document.getElementById("stop").disabled = false;
-                    document.getElementById("halt").disabled = false;
-                }
-
-                // リセット
-                function reset() {
-                    document.getElementById("result_text").innerHTML = "";
-                    finalTranscript = '';
-                    speechSynthesis.cancel();
-                    document.getElementById("play").disabled = true;
-                    document.getElementById("stop").disabled = true;
-                    document.getElementById("halt").disabled = true;
-                    document.getElementById("restart").disabled = true;
-                }
-
-                // 録音開始
-                function recStart() {
-                    document.getElementById("blink").innerHTML = '<div id="blinkStart"><i class="material-icons">keyboard_voice</i><span>REC</span></div>';
-                    document.getElementById("reset").disabled = true;
-                    document.getElementById("play").disabled = true;
-                    document.getElementById("recStart").disabled = true;
-                }
-
-                // 録音停止
-                function recStop() {
-                    document.getElementById("blinkStart").innerHTML = '<div id="blink"></div>';
-                    document.getElementById("reset").disabled = false;
-                    document.getElementById("play").disabled = false;
-                    document.getElementById("recStart").disabled = false;
-                }
-
-                // background
-                bubbly({
-                        colorStart: '#6edbff',
-                        colorStop: '#6edbff',
-                        blur: 5,
-                        compose: 'source-over',
-                        bubbles: 80,
-                        velocityFunc: () => Math.random() * 1.3,
-                        radiusFunc: () => Math.random() * 20,
-                        bubbleFunc: () => `hsla(${Math.random() * 360}, 50%, 85%, .18)`
-                    });
-
+            // チャット
             function changeHandler(input_value) {
                 const chatMessage = $(input_value).serialize();
 
@@ -153,6 +54,7 @@
                 $("#chatLogs").append("<div class='chatLog'>" + input_value.value + "</div>");
                 // 入力欄の初期化
                 document.getElementById('chatMessage').value = "";
+                finalTranscript = "";
 
                 $.ajax("/show", {
                     type: "post",
@@ -166,6 +68,10 @@
 
                     // 受信メッセージの表示
                     $("#chatLogs").append("<div class='chatLog'>" + message + "</div>");
+
+                    // 受信メッセージの読み上げ
+                    const text = new SpeechSynthesisUtterance(message);
+                    speechSynthesis.speak(text);
 
                 }).fail(function (data) { // 失敗した場合実行される
                     console.log("Ajax通信 失敗");
