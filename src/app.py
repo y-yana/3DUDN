@@ -12,7 +12,7 @@ def index():
 # /showにPOSTリクエストが送られたら処理してJSONを返す
 @app.route('/show', methods=['POST'])
 def show():
-    res=response(request.form['username'])
+    res = response(request.form['chatMessage'])
 
     return_json = {
         "message": res
