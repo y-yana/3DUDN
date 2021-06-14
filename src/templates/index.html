@@ -151,6 +151,8 @@
 
                 // 送信メッセージの表示
                 $("#chatLogs").append("<div class='chatLog'>" + input_value.value + "</div>");
+                // 入力欄の初期化
+                document.getElementById('chatMessage').value = "";
 
                 $.ajax("/show", {
                     type: "post",
@@ -161,8 +163,6 @@
 
                     // POSTリクエストの結果を受け取ってHTMLを書き換える
                     const message = JSON.parse(data.values).message
-                    // document.getElementById("midashi").innerHTML = message; と同義
-                    //$("#midashi").html(message);
 
                     // 受信メッセージの表示
                     $("#chatLogs").append("<div class='chatLog'>" + message + "</div>");
