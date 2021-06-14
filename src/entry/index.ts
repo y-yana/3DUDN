@@ -48,7 +48,7 @@ const axesHelper = new THREE.AxesHelper(0.5)
 
 // VRMの読み込み
   const loader = new GLTFLoader()
-  loader.load('./static/models/test.vrm',
+  loader.load('./static/models/base.vrm',
     (gltf) => {
       VRM.from(gltf).then( (vrm) => {
         // シーンへの追加

@@ -24,6 +24,12 @@
             <button onclick="changeHandler(document.getElementById('ajaxTest'))">submit</button>
         </form>
 
+        <!--アップロード-->
+        <form method="post" action="/upload" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button>upload</button>
+        </form>
+
         <canvas id="canvas" width="600px" height="600px"></canvas>
         <div class="recordingArea">
             <div id="blink"></div>
@@ -161,5 +167,8 @@
                 });
             }
         </script>
+
+        
+
     </body>
 </html>
