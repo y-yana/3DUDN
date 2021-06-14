@@ -26,6 +26,7 @@
             <!-- 入力値の変更があったらJSの関数を実行する -->
             <input type="text" id="chatMessage" name="chatMessage" placeholder="Write message">
             <input type="button" id="recStart_" class="recordBtn" onclick="recognition.start();recStart();" value="録音開始" />
+            <input type="button" id="recStop_" class="recordBtn" onClick="recognition.stop();recStop();" value="録音終了" />
             <button onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
         </form>
 
