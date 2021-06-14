@@ -20,7 +20,8 @@
         <!-- フォームに値を入れても遷移しないようにするため、onsubmitにfalseを返す -->
         <form name="example_form" onsubmit="return false;">
             <!-- 入力値の変更があったらJSの関数を実行する -->
-            <input type="text" name="username" placeholder="Write your name" onchange="changeHandler(this)">
+            <input type="text" id="ajaxTest" name="username" placeholder="Write your name">
+            <button onclick="changeHandler(document.getElementById('ajaxTest'))">submit</button>
         </form>
 
         <canvas id="canvas" width="600px" height="600px"></canvas>
