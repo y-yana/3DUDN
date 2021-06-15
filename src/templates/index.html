@@ -28,6 +28,12 @@
             <button onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
         </form>
 
+        <!--アップロード-->
+        <form method="post" action="/upload" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button>upload</button>
+        </form>
+
         <canvas id="canvas" width="600px" height="600px"></canvas>
 
         <script src="static/main.js"></script>
@@ -79,5 +85,8 @@
                 });
             }
         </script>
+
+        
+
     </body>
 </html>
