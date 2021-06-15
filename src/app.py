@@ -33,10 +33,10 @@ def upload():
     app.logger.info('file_name={}'.format(fs.filename))
     app.logger.info('content_type={} content_length={}, mimetype={}, mimetype_params={}'.format(
         fs.content_type, fs.content_length, fs.mimetype, fs.mimetype_params))
-    
+
 
     # ファイルを保存
-    fs.save('./static/models/test.vrm')
+    fs.save('./static/models/upload.vrm')
 
     return render_template("index.html")
 

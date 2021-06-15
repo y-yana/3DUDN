@@ -28,18 +28,17 @@
             <button onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
         </form>
 
-        <!--アップロード-->
-        <form method="post" action="/upload" enctype="multipart/form-data">
-            <input type="file" name="file">
-            <button>upload</button>
-        </form>
+        <div id="modelChangeArea">
+            <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <button id="uploadBtn">upload</button>
+            </form>
+        </div>
 
         <canvas id="canvas" width="600px" height="600px"></canvas>
 
         <script src="static/main.js"></script>
-
         <script>
-
             // background
             bubbly({
                     colorStart: '#6edbff',
@@ -85,8 +84,5 @@
                 });
             }
         </script>
-
-        
-
     </body>
 </html>
