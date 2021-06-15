@@ -1,14 +1,14 @@
+//declare var require: any;
 import * as THREE from 'three'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { VRM, VRMSchema } from '@pixiv/three-vrm'
 
 window.addEventListener("DOMContentLoaded", () => {
-  var modelChange = <HTMLCanvasElement>document.getElementById('modelChangeBtn');
   var modelPass = './static/models/base.vrm';
   var modelNum = 0
 
-  modelChange.onclick = function modelChange() {
+  $(document).on('click','#modelChangeBtn',function() {
     if (modelNum == 0) {
       modelPass = './static/models/upload.vrm';
       modelNum = 1;
@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
     sceneOption()
     newLoad()
     tick()
-  }
+  })
 
   // レンダラーの設定
   var  canvas = <HTMLCanvasElement> document.getElementById('canvas');
