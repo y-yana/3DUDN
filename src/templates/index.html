@@ -39,19 +39,6 @@
 
         <script src="static/main.js"></script>
         <script>
-            // background
-            bubbly({
-                    colorStart: '#6edbff',
-                    colorStop: '#6edbff',
-                    blur: 5,
-                    compose: 'source-over',
-                    bubbles: 80,
-                    velocityFunc: () => Math.random() * 1.3,
-                    radiusFunc: () => Math.random() * 20,
-                    bubbleFunc: () => `hsla(${Math.random() * 360}, 50%, 85%, .18)`
-                });
-
-
             // チャット
             function changeHandler(input_value) {
                 const chatMessage = $(input_value).serialize();
