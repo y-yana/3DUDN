@@ -96,7 +96,7 @@ eval("\nwindow.onload = function () {\n    setTimeout(addLoaded, 3000);\n};\nfun
   \*************************************/
 /***/ (() => {
 
-eval("\ndocument.getElementById('uploadBtn').onclick = function () {\n    var parent = document.getElementById('modelChangeArea');\n    var child = document.getElementById('uploadForm');\n    parent.removeChild(child);\n    var newElement = document.createElement(\"button\");\n    var newContent = document.createTextNode(\"Model Change\");\n    newElement.appendChild(newContent);\n    newElement.setAttribute(\"id\", \"modelChangeBtn\");\n    parent.appendChild(newElement);\n};\n\n\n//# sourceURL=webpack:///./src/entry/js/modelChange.js?");
+eval("\ndocument.getElementById('uploadBtn').onSubmit = function () {\n    var parent = document.getElementById('modelChangeArea');\n    var child = document.getElementById('uploadForm');\n    parent.removeChild(child);\n    var newElement = document.createElement(\"button\");\n    var newContent = document.createTextNode(\"Model Change\");\n    newElement.appendChild(newContent);\n    newElement.setAttribute(\"id\", \"modelChangeBtn\");\n    parent.appendChild(newElement);\n};\n\n\n//# sourceURL=webpack:///./src/entry/js/modelChange.js?");
 
 /***/ }),
 

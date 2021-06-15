@@ -1,4 +1,4 @@
-document.getElementById('uploadBtn').onclick = function() {
+document.getElementById('uploadBtn').onSubmit = function() {
   var parent = document.getElementById('modelChangeArea');
   var child = document.getElementById('uploadForm');
   parent.removeChild(child);
