@@ -38,7 +38,7 @@ def upload():
     # ファイルを保存
     fs.save('./static/models/test.vrm')
 
-    return render_template("index2.html")
+    return render_template("index.html")
 
 if __name__ == '__main__':
   app.run()
