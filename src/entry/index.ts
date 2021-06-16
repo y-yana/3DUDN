@@ -6,22 +6,24 @@ import { updateArrayBindingPattern } from 'typescript';
 
 window.addEventListener("DOMContentLoaded", () => {
   var modelPass = './static/models/base.vrm';
+  var posepass = '../static/pose/anim.csv'
   var modelNum = 0
 
   $(document).on('click','#modelChangeBtn',function() {
     if (modelNum == 0) {
       modelPass = './static/models/upload.vrm';
+      posepass = '../static/pose/anim2.csv'
       modelNum = 1;
     } else {
       modelNum = 0;
       modelPass = './static/models/base.vrm';
+      posepass = '../static/pose/anim.csv'
     }
 
     scene.remove.apply(scene, scene.children);
 
     sceneOption()
     newLoad()
-    //tick()
     update()
   })
 
@@ -144,7 +146,7 @@ window.addEventListener("DOMContentLoaded", () => {
    
   // AnimationClipの生成
   const clip = THREE.AnimationClip.parseAnimation({
-    hierarchy: csv2hierarchy(http2str('../static/pose/anim.csv'), 200)
+    hierarchy: csv2hierarchy(http2str(posepass), 200)
   }, boneNode)
  
   // トラック名の変更
@@ -159,14 +161,6 @@ window.addEventListener("DOMContentLoaded", () => {
   let action = mixer.clipAction(clip)
   action.play()
  }
-  /*// 初回実行
-  tick()
-
-  function tick() {
-    requestAnimationFrame(tick)
-    // レンダリング
-    renderer.render(scene, camera)
-  }*/
   let lastTime = (new Date()).getTime()
  
   // フレーム毎に呼ばれる
