@@ -1,0 +1,5 @@
+build:
+  languages:
+    - python
+run:
+  web: gunicorn src/main:app --log-file -
