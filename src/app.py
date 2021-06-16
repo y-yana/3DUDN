@@ -20,25 +20,13 @@ def show():
 
     return jsonify(values=json.dumps(return_json))
 
+
 @app.route('/upload', methods=['POST'])
 def upload():
-    if 'file' not in request.files:
-        return 'ファイル未指定'
+    the_file = request.files['the_file']
+    the_file.save('./static/models/upload.vrm')
+    return ""
 
-    # fileの取得（FileStorage型で取れる）
-    # https://tedboy.github.io/flask/generated/generated/werkzeug.FileStorage.html
-    fs = request.files['file']
-
-    # 下記のような情報がFileStorageからは取れる
-    app.logger.info('file_name={}'.format(fs.filename))
-    app.logger.info('content_type={} content_length={}, mimetype={}, mimetype_params={}'.format(
-        fs.content_type, fs.content_length, fs.mimetype, fs.mimetype_params))
-
-
-    # ファイルを保存
-    fs.save('./static/models/upload.vrm')
-
-    return render_template("index.html")
 
 if __name__ == '__main__':
-  app.run()
+    app.run()
