@@ -47,7 +47,6 @@
                 $("#chatLogs").append("<div class='chatLog'>" + input_value.value + "</div>");
                 // 入力欄の初期化
                 document.getElementById('chatMessage').value = "";
-                finalTranscript = "";
 
                 $.ajax("/show", {
                     type: "post",

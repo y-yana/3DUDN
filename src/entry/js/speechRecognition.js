@@ -14,15 +14,16 @@ document.getElementById('recStop_').onclick = function recStop() {
 }
 
 recognition.onresult = function (event) {
-    let interimTranscript = '';
-    for (let i = event.resultIndex; i < event.results.length; i++) {
-        let transcript = event.results[i][0].transcript;
-        if (event.results[i].isFinal) {
-            transcript += "。\n";
-            finalTranscript += transcript;
-        } else {
-            interimTranscript = transcript;
-        }
+  let interimTranscript = '';
+  finalTranscript = "";
+  for (let i = event.resultIndex; i < event.results.length; i++) {
+    let transcript = event.results[i][0].transcript;
+    if (event.results[i].isFinal) {
+      transcript += "。\n";
+      finalTranscript += transcript;
+    } else {
+      interimTranscript = transcript;
     }
-    document.getElementById("chatMessage").value = finalTranscript + interimTranscript;
+  }
+  document.getElementById("chatMessage").value = finalTranscript + interimTranscript;
 }
