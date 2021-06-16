@@ -29,9 +29,9 @@
         </form>
 
         <div id="modelChangeArea">
-            <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data">
-                <input type="file" name="file">
-                <button id="uploadBtn">upload</button>
+            <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
+                <input id="upFile" type="file" name="the_file">
+                <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))">upload</button>
             </form>
         </div>
 
@@ -39,7 +39,7 @@
 
         <script src="static/main.js"></script>
         <script>
-            // チャット
+            // チャット機能
             function changeHandler(input_value) {
                 const chatMessage = $(input_value).serialize();
 
@@ -70,6 +70,34 @@
                     console.log("Ajax通信 失敗");
                 });
             }
+
+            // モデル変更機能
+            function uploadFormSubmit(input_value) {
+                var formData = new FormData($('#uploadForm')[0]);
+                $.ajax({
+                    url: '/upload',
+                    type: 'post',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    timeout: 10000
+                }).done(function () {
+                    // form要素の削除
+                    var parent = document.getElementById('modelChangeArea');
+                    var child = document.getElementById('uploadForm');
+                    parent.removeChild(child);
+
+                    // #modelChangeBtnを追加
+                    var newElement = document.createElement("button");
+                    var newContent = document.createTextNode("Model Change");
+                    newElement.appendChild(newContent);
+                    newElement.setAttribute("id", "modelChangeBtn");
+                    parent.appendChild(newElement);
+                }).fail(function () {
+                    console.log('fail');
+                });
+
+            };
         </script>
     </body>
 </html>
