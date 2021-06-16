@@ -5,7 +5,7 @@ import { VRM, VRMSchema } from '@pixiv/three-vrm'
 import { updateArrayBindingPattern } from 'typescript';
 
 window.addEventListener("DOMContentLoaded", () => {
-  var modelPass = './static/models/kagami.vrm';
+  var modelPass = './static/models/base.vrm';
   var modelNum = 0
 
   $(document).on('click','#modelChangeBtn',function() {
@@ -141,11 +141,10 @@ window.addEventListener("DOMContentLoaded", () => {
   for(let i=0;i < bones.length;i++){
     boneNode[i] = vrm.humanoid.getBoneNode(bones[i])
   }
-  console.log(boneNode)
    
   // AnimationClipの生成
   const clip = THREE.AnimationClip.parseAnimation({
-    hierarchy: csv2hierarchy(http2str('../static/anim.csv'), 200)
+    hierarchy: csv2hierarchy(http2str('../static/pose/anim.csv'), 200)
   }, boneNode)
  
   // トラック名の変更
