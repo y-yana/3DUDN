@@ -1,5 +1,5 @@
 build:
-  languages:
-    - python
+  docker:
+     web:Dockerfile
 run:
-  web: gunicorn src/main:app --log-file -
+  web: gunicorn main:app --log-file -
