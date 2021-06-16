@@ -2,9 +2,10 @@ import * as THREE from 'three'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { VRM, VRMSchema } from '@pixiv/three-vrm'
+import { updateArrayBindingPattern } from 'typescript';
 
 window.addEventListener("DOMContentLoaded", () => {
-  var modelPass = './static/models/base.vrm';
+  var modelPass = './static/models/kagami.vrm';
   var modelNum = 0
 
   $(document).on('click','#modelChangeBtn',function() {
@@ -20,7 +21,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     sceneOption()
     newLoad()
-    tick()
+    //tick()
+    update()
   })
 
   // レンダラーの設定
@@ -69,6 +71,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // VRMの読み込み
+  let mixer
   const loader = new GLTFLoader()
   newLoad()
 
@@ -79,17 +82,112 @@ window.addEventListener("DOMContentLoaded", () => {
           // シーンへの追加
           scene.add(vrm.scene)
           vrm.scene.rotation.y = Math.PI
+          setupAnimation(vrm)
         })
       }
     )
   }
 
-  // 初回実行
+  // http → str
+  const http2str = (url) => {
+    try {
+      let request=new XMLHttpRequest()
+      request.open("GET",url,false)
+      request.send(null)
+      if (request.status==200 && request.readyState == 4) {
+        return request.responseText.trim()
+      }
+    } catch (e) {
+      console.log(e)
+    }
+    return null
+  }    
+ 
+  // CSV → hierarchy
+  const csv2hierarchy = (csv, fps) => {
+    // 文字列 → 配列
+    let lines =  csv.trim().split('\n')
+    let data: number[][] = []
+    for (let j=0; j<lines.length; j++) {
+      data[j] = []
+      let strs = lines[j].split(',')
+      for (let i=0; i<55*4; i++) {
+        data[j][i] = Number(strs[i])            
+      }
+    }
+    // 配列 → hierarchy
+    let hierarchy = []
+    for (let i=0; i<55; i++) {
+      let keys = []
+      for (let j=0; j<data.length; j++) {
+        keys[j] = {
+          rot: new THREE.Quaternion(-data[j][i*4],-data[j][i*4+1],data[j][i*4+2],data[j][i*4+3]).toArray(),
+          time: fps*j                       
+        }
+      }
+      hierarchy[i] = {'keys': keys}
+    } 
+    hierarchy.splice(23,1)
+
+    return hierarchy
+  }
+
+ // アニメーションの設定
+ const setupAnimation = (vrm) => {
+  // ボーンリストの生成
+  //const bones = ["hips","leftUpperLeg","rightUpperLeg","leftLowerLeg","rightLowerLeg","leftFoot","rightFoot","spine","chest","neck","head","leftShoulder","rightShoulder","leftUpperArm","rightUpperArm","leftLowerArm","rightLowerArm","leftHand","rightHand","leftToes","rightToes","leftEye","rightEye","jaw","leftThumbProximal","leftThumbIntermediate","leftThumbDistal","leftIndexProximal","leftIndexIntermediate","leftIndexDistal","leftMiddleProximal","leftMiddleIntermediate","leftMiddleDistal","leftRingProximal","leftRingIntermediate","leftRingDistal","leftLittleProximal","leftLittleIntermediate","leftLittleDistal","rightThumbProximal","rightThumbIntermediate","rightThumbDistal","rightIndexProximal","rightIndexIntermediate","rightIndexDistal","rightMiddleProximal","rightMiddleIntermediate","rightMiddleDistal","rightRingProximal","rightRingIntermediate","rightRingDistal","rightLittleProximal","rightLittleIntermediate","rightLittleDistal","upperChest"]
+  const bones = ["hips","leftUpperLeg","rightUpperLeg","leftLowerLeg","rightLowerLeg","leftFoot","rightFoot","spine","chest","neck","head","leftShoulder","rightShoulder","leftUpperArm","rightUpperArm","leftLowerArm","rightLowerArm","leftHand","rightHand","leftToes","rightToes","leftEye","rightEye","leftThumbProximal","leftThumbIntermediate","leftThumbDistal","leftIndexProximal","leftIndexIntermediate","leftIndexDistal","leftMiddleProximal","leftMiddleIntermediate","leftMiddleDistal","leftRingProximal","leftRingIntermediate","leftRingDistal","leftLittleProximal","leftLittleIntermediate","leftLittleDistal","rightThumbProximal","rightThumbIntermediate","rightThumbDistal","rightIndexProximal","rightIndexIntermediate","rightIndexDistal","rightMiddleProximal","rightMiddleIntermediate","rightMiddleDistal","rightRingProximal","rightRingIntermediate","rightRingDistal","rightLittleProximal","rightLittleIntermediate","rightLittleDistal","upperChest"]
+  const boneNode = []
+  for(let i=0;i < bones.length;i++){
+    boneNode[i] = vrm.humanoid.getBoneNode(bones[i])
+  }
+  console.log(boneNode)
+   
+  // AnimationClipの生成
+  const clip = THREE.AnimationClip.parseAnimation({
+    hierarchy: csv2hierarchy(http2str('../static/anim.csv'), 200)
+  }, boneNode)
+ 
+  // トラック名の変更
+  clip.tracks.some((track) => {
+    track.name = track.name.replace(/^\.bones\[([^\]]+)\].(position|quaternion|scale)$/, '$1.$2')
+  })
+ 
+  // AnimationMixerの生成と再生
+  mixer = new THREE.AnimationMixer(vrm.scene)
+ 
+  // AnimationActionの生成とアニメーションの再生
+  let action = mixer.clipAction(clip)
+  action.play()
+ }
+  /*// 初回実行
   tick()
 
   function tick() {
     requestAnimationFrame(tick)
     // レンダリング
     renderer.render(scene, camera)
+  }*/
+  let lastTime = (new Date()).getTime()
+ 
+  // フレーム毎に呼ばれる
+  const update = () => {
+    requestAnimationFrame(update)
+   
+    // 時間計測
+    let time = (new Date()).getTime()
+    let delta = time - lastTime;
+
+    // アニメーションの定期処理
+    if (mixer) {
+      mixer.update(delta)
+    }
+
+    // 最終更新時間
+    lastTime = time;
+
+    // レンダリング
+    renderer.render(scene, camera)
   }
+  update()
 })
