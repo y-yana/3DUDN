@@ -13,12 +13,26 @@ def index():
     session['user_name'] = 'master'
     session['bot_name'] = 'bot'
     return render_template("index.html")
-    
-@app.route('/rename', methods=['POST'])
-def upload():
-    session['user_name'] = request.form['user_name']
-    session['bot_name'] = request.form['bot_name']
-    return ""
+
+
+@app.route('/user_rename', methods=['POST'])
+def user():
+    #session['user_name'] = request.form['user_name']
+    res = response(request.form['user_name'])
+    return_json = {
+        "message": res
+    }
+    return jsonify(values=json.dumps(return_json))
+
+
+@app.route('/bot_rename', methods=['POST'])
+def bot():
+    #session['bot_name'] = request.form['bot_name']
+    res = response(request.form['bot_name'])
+    return_json = {
+        "message": res
+    }
+    return jsonify(values=json.dumps(return_json))
 
 
 @app.route("/chat", methods=["POST"])

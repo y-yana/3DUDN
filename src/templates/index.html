@@ -1,8 +1,59 @@
 {% extends "layout.html" %}{% block content %}
+
+<form action="/user_rename" onsubmit="return false;">
+    <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
+    <button onclick="changeUserName(document.getElementById('user_name'))">submit</button>
+</form>
+
+<form action="/bot_rename" onsubmit="return false;">
+    <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
+    <button onclick="changeBotName(document.getElementById('bot_name'))">submit</button>
+</form>
+
 <form action="/chat" method="POST">
     <input type="submit" value="chat!!!">
 </form>
+
 <canvas id="canvas" width="600px" height="600px"></canvas>
+
 <script src="static/main.js"></script>
+
+<script>
+function changeUserName(input_value) {
+    const user_name = $(input_value).serialize();
+
+    $.ajax("/user_rename", {
+        type: "post",
+        data: user_name,  // POSTでサーバーに送信するデータ
+        dataType: "json",
+    }).done(function (data) { // 成功した場合実行される
+        console.log("Ajax通信 成功");
+
+        const message = JSON.parse(data.values).message
+        console.log(message);
+
+    }).fail(function (data) { // 失敗した場合実行される
+        console.log("Ajax通信 失敗");
+    });
+}
+
+function changeBotName(input_value) {
+    const bot_name = $(input_value).serialize();
+
+    $.ajax("/bot_rename", {
+        type: "post",
+        data: bot_name,  // POSTでサーバーに送信するデータ
+        dataType: "json",
+    }).done(function (data) { // 成功した場合実行される
+        console.log("Ajax通信 成功");
+
+        const message = JSON.parse(data.values).message
+        console.log(message);
+
+    }).fail(function (data) { // 失敗した場合実行される
+        console.log("Ajax通信 失敗");
+    });
+}
+</script>
 
 {% endblock %}
