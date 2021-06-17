@@ -2,7 +2,7 @@ from flask import Flask, render_template, jsonify, request
 import json
 from chat import response
 import os
-app = Flask(__name__,static_url_path="")
+app = Flask(__name__)
 
 @app.route('/')
 def index():
