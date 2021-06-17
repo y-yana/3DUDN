@@ -1,8 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 import json
 from chat import response
-app = Flask(__name__)
-
+app = Flask(__name__,static_url_path="")
 
 @app.route('/')
 def index():
