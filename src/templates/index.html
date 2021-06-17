@@ -1,5 +1,8 @@
-{% block content %}
+{% extends "layout.html" %}{% block content %}
 <form action="/chat" method="POST">
     <input type="submit" value="chat!!!">
 </form>
+<canvas id="canvas" width="600px" height="600px"></canvas>
+<script src="static/main.js"></script>
+
 {% endblock %}

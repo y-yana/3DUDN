@@ -1,124 +1,107 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="URoidChat">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://u-roid-chat.herokuapp.com/">
-        <meta property="og:image" content="https://u-roid-chat.herokuapp.com/src/static/images/OGP.png" />
-        <meta property="og:description" content="うちの子とおしゃべりできます">
-        <meta property="og:site_name" content="URoidChat">
-        <meta name="twitter:card" content="summary_large_image">
-        <link rel="stylesheet" href="../static/style.css">
-        <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js"></script>
-        <title>3DUDN</title>
-    </head>
-    <body>
-        <div id="loading">
-            <div class="loader bluelight">
-                <p>Now Loading...</p>
-            </div>
-        </div>
+{% extends "layout.html" %}{% block content %}
 
-        <div id="chatArea">
-            <div id="chatLogs">
-            </div>
-        </div>
+<div id="loading">
+    <div class="loader bluelight">
+        <p>Now Loading...</p>
+    </div>
+</div>
 
-        <form id="chatSubmitForm" name="example_form" onsubmit="return false;">
-            <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Write message">
-            <button id="recStart_" class="recordBtn">録音開始</button>
-            <button id="chatSubmitBtn" onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
-        </form>
+<div id="chatArea">
+    <div id="chatLogs">
+    </div>
+</div>
 
-        <div id="modelChangeArea">
-            <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
-                <input id="upFile" type="file" name="the_file">
-                <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))">upload</button>
-            </form>
-        </div>
+<form id="chatSubmitForm" name="example_form" onsubmit="return false;">
+    <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Write message">
+    <button id="recStart_" class="recordBtn">録音開始</button>
+    <button id="chatSubmitBtn" onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
+</form>
 
-        <canvas id="canvas" width="600px" height="600px"></canvas>
+<div id="modelChangeArea">
+    <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
+        <input id="upFile" type="file" name="the_file">
+        <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))">upload</button>
+    </form>
+</div>
 
-        <script src="static/main.js"></script>
-        <script>
-            // チャット機能
-            function changeHandler(input_value) {
-                const chatMessage = $(input_value).serialize();
+<canvas id="canvas" width="600px" height="600px"></canvas>
 
-                // 空白でsubmitした時の処理
-                if(input_value.value == ''){
-                    var null_message = 'ちょっとよく聞こえなかったから、もう一回言ってほしいな〜'
+<script src="static/main.js"></script>
+<script>
+    // チャット機能
+    function changeHandler(input_value) {
+        const chatMessage = $(input_value).serialize();
 
-                    // 返事の表示
-                    $("#chatLogs").append("<div class='chatLog'>" + null_message + "</div>");
+        // 空白でsubmitした時の処理
+        if(input_value.value == ''){
+            var null_message = 'ちょっとよく聞こえなかったから、もう一回言ってほしいな〜'
 
-                    // 返事の読み上げ
-                    const text = new SpeechSynthesisUtterance(null_message);
-                    speechSynthesis.speak(text);
+            // 返事の表示
+            $("#chatLogs").append("<div class='chatLog'>" + null_message + "</div>");
 
-                    // 関数抜ける
-                    return '';
+            // 返事の読み上げ
+            const text = new SpeechSynthesisUtterance(null_message);
+            speechSynthesis.speak(text);
 
-                };
+            // 関数抜ける
+            return '';
 
-                // 送信メッセージの表示
-                $("#chatLogs").append("<div class='chatLog'>" + input_value.value + "</div>");
-                // 入力欄の初期化
-                document.getElementById('chatMessage').value = "";
+        };
 
-                $.ajax("/show", {
-                    type: "post",
-                    data: chatMessage,  // POSTでサーバーに送信するデータ
-                    dataType: "json",
-                }).done(function (data) { // 成功した場合実行される
-                    console.log("Ajax通信 成功");
+        // 送信メッセージの表示
+        $("#chatLogs").append("<div class='chatLog'>" + input_value.value + "</div>");
+        // 入力欄の初期化
+        document.getElementById('chatMessage').value = "";
 
-                    // POSTリクエストの結果を受け取ってHTMLを書き換える
-                    const message = JSON.parse(data.values).message
+        $.ajax("/show", {
+            type: "post",
+            data: chatMessage,  // POSTでサーバーに送信するデータ
+            dataType: "json",
+        }).done(function (data) { // 成功した場合実行される
+            console.log("Ajax通信 成功");
 
-                    // 受信メッセージの表示
-                    $("#chatLogs").append("<div class='chatLog'>" + message + "</div>");
+            // POSTリクエストの結果を受け取ってHTMLを書き換える
+            const message = JSON.parse(data.values).message
 
-                    // 受信メッセージの読み上げ
-                    const text = new SpeechSynthesisUtterance(message);
-                    speechSynthesis.speak(text);
+            // 受信メッセージの表示
+            $("#chatLogs").append("<div class='chatLog'>" + message + "</div>");
 
-                }).fail(function (data) { // 失敗した場合実行される
-                    console.log("Ajax通信 失敗");
-                });
-            }
+            // 受信メッセージの読み上げ
+            const text = new SpeechSynthesisUtterance(message);
+            speechSynthesis.speak(text);
 
-            // モデル変更機能
-            function uploadFormSubmit(input_value) {
-                var formData = new FormData($('#uploadForm')[0]);
-                $.ajax({
-                    url: '/upload',
-                    type: 'post',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    timeout: 10000
-                }).done(function () {
-                    // form要素の削除
-                    var parent = document.getElementById('modelChangeArea');
-                    var child = document.getElementById('uploadForm');
-                    parent.removeChild(child);
+        }).fail(function (data) { // 失敗した場合実行される
+            console.log("Ajax通信 失敗");
+        });
+    }
 
-                    // #modelChangeBtnを追加
-                    var newElement = document.createElement("button");
-                    var newContent = document.createTextNode("Model Change");
-                    newElement.appendChild(newContent);
-                    newElement.setAttribute("id", "modelChangeBtn");
-                    parent.appendChild(newElement);
-                }).fail(function () {
-                    console.log('fail');
-                });
+    // モデル変更機能
+    function uploadFormSubmit(input_value) {
+        var formData = new FormData($('#uploadForm')[0]);
+        $.ajax({
+            url: '/upload',
+            type: 'post',
+            data: formData,
+            processData: false,
+            contentType: false,
+            timeout: 10000
+        }).done(function () {
+            // form要素の削除
+            var parent = document.getElementById('modelChangeArea');
+            var child = document.getElementById('uploadForm');
+            parent.removeChild(child);
 
-            };
-        </script>
-    </body>
-</html>
+            // #modelChangeBtnを追加
+            var newElement = document.createElement("button");
+            var newContent = document.createTextNode("Model Change");
+            newElement.appendChild(newContent);
+            newElement.setAttribute("id", "modelChangeBtn");
+            parent.appendChild(newElement);
+        }).fail(function () {
+            console.log('fail');
+        });
+
+    };
+</script>
+
+{% endblock %}
