@@ -9,6 +9,10 @@ def index():
     #return "Hello World"
     return render_template("index.html")
 
+@app.route("/chat", methods=["POST"])
+def move_chat():
+    return render_template("chat.html")
+
 # /showにPOSTリクエストが送られたら処理してJSONを返す
 @app.route('/show', methods=['POST'])
 def show():
