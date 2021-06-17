@@ -29,7 +29,7 @@
         </div>
 
         <form id="chatSubmitForm" name="example_form" onsubmit="return false;">
-            <input type="text" id="chatMessage" name="chatMessage" placeholder="Write message">
+            <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Write message">
             <button id="recStart_" class="recordBtn">録音開始</button>
             <button id="chatSubmitBtn" onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
         </form>
@@ -48,6 +48,22 @@
             // チャット機能
             function changeHandler(input_value) {
                 const chatMessage = $(input_value).serialize();
+
+                // 空白でsubmitした時の処理
+                if(input_value.value == ''){
+                    var null_message = 'ちょっとよく聞こえなかったから、もう一回言ってほしいな〜'
+
+                    // 返事の表示
+                    $("#chatLogs").append("<div class='chatLog'>" + null_message + "</div>");
+
+                    // 返事の読み上げ
+                    const text = new SpeechSynthesisUtterance(null_message);
+                    speechSynthesis.speak(text);
+
+                    // 関数抜ける
+                    return '';
+
+                };
 
                 // 送信メッセージの表示
                 $("#chatLogs").append("<div class='chatLog'>" + input_value.value + "</div>");
