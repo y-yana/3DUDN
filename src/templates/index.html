@@ -28,10 +28,9 @@
             </div>
         </div>
 
-        <form name="example_form" onsubmit="return false;">
+        <form id="chatSubmitForm" name="example_form" onsubmit="return false;">
             <input type="text" id="chatMessage" name="chatMessage" placeholder="Write message">
-            <input type="button" id="recStart_" class="recordBtn" value="録音開始" />
-            <input type="button" id="recStop_" class="recordBtn" value="録音終了" />
+            <button id="recStart_" class="recordBtn">録音開始</button>
             <button onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
         </form>
 
