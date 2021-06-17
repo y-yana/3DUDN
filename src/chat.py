@@ -7,7 +7,9 @@ def response(word):
     headers = {'content-type':'text/json'}
     payload = {'utterance':word,
                 "username":"マスター",
-                "agentState":{"agentName":"サリエリ","tone":"normal", "age":"0歳"},}
+                "agentState":{"agentName":"サリエリ","tone":"normal", "age":"0歳"},
+                "addition" :{"ngwords":['<','>','(',')']}
+                }
 
     # APIKEYの部分は自分のAPI鍵を代入してください
     url = 'https://www.chaplus.jp/v1/chat?apikey=60c309a36d313'
