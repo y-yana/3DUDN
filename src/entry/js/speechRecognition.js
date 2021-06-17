@@ -21,6 +21,9 @@ $(document).on('click','#recStart_',function() {
   newElement.setAttribute("class", "recordBtn");
   parent.insertBefore(newElement, input.nextElementSibling);
 
+  // 送信ボタンの無効化
+  $("#chatSubmitBtn").prop("disabled", true);
+
   // 録音開始
   recognition.start();
 })
@@ -39,6 +42,10 @@ $(document).on('click','#recStop_',function() {
   newElement.setAttribute("id", "recStart_");
   newElement.setAttribute("class", "recordBtn");
   parent.insertBefore(newElement, input.nextElementSibling);
+
+  // 送信ボタンの有効化
+  $("#chatSubmitBtn").prop("disabled", false);
+
   // 録音終了
   recognition.stop();
 })
