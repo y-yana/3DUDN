@@ -1,10 +1,7 @@
 {% extends "layout.html" %}{% block content %}
 
 <!-- ローディング -->
-<div id="loading">
-    <div class="loader bluelight">
-        <p>Now Loading...</p>
-    </div>
+<div id="loadingArea">
 </div>
 
 <!-- チャットエリア -->
@@ -99,6 +96,24 @@
 
     // モデル変更機能
     function uploadFormSubmit(input_value) {
+        // loading
+        var parent = document.getElementById("loadingArea");
+        var newElement = document.createElement("div");
+        var newContent = document.createElement("div");
+        var newChild = document.createElement("p");
+
+        newElement.appendChild(newContent);
+        newContent.appendChild(newChild);
+
+        newElement.setAttribute("id", "loading");
+        newContent.setAttribute("class", "loader bluelight");
+
+        var newText = document.createTextNode("Now Loading...");
+        newChild.appendChild(newText);
+
+        $(newElement).appendTo(parent).hide().fadeIn(300);
+
+        // form送信
         var formData = new FormData($('#uploadForm')[0]);
         $.ajax({
             url: '/upload',
@@ -112,6 +127,9 @@
             var parent = document.getElementById('modelChangeArea');
             var child = document.getElementById('uploadForm');
             parent.removeChild(child);
+
+            // loading要素の削除
+            $('#loading').fadeOut('normal');
 
         }).fail(function () {
             console.log('fail');
