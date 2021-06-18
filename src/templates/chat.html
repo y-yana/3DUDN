@@ -32,12 +32,16 @@
     function changeHandler(input_value) {
         const chatMessage = $(input_value).serialize();
 
+        var sendTime = new Date();
+        var Hour = sendTime.getHours();
+        var Min = sendTime.getMinutes();
+
         // 空白でsubmitした時の処理
         if(input_value.value == ''){
             var null_message = 'ちょっとよく聞こえなかったから、もう一回言ってほしいな〜'
 
             // 返事の表示
-            $("#chatLogs").append("<div class='chatLog'>" + null_message + "</div>");
+            $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + null_message + "</div><span id = 'sendTime' >" + Hour + ": " + Min + "</span ></div>");
 
             // 返事の読み上げ
             const text = new SpeechSynthesisUtterance(null_message);
@@ -49,7 +53,7 @@
         };
 
         // 送信メッセージの表示
-        $("#chatLogs").append("<div class='chatLog'>" + input_value.value + "</div>");
+        $("#chatLogs").append("<div class='chatMessage'><span id = 'sendTime' >" + Hour + ": " + Min + "</span ><div class='chatLog'>" + input_value.value + "</div></div>");
         // 入力欄の初期化
         document.getElementById('chatMessage').value = "";
 
