@@ -29,6 +29,7 @@
             timeout: 10000
         }).done(function () {
             // form要素の削除
+            model_change();
             var parent = document.getElementById('modelChangeArea');
             var child = document.getElementById('uploadForm');
             parent.removeChild(child);

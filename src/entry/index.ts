@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
   var posepass = '../static/pose/anim.csv'
   var modelNum = 0
 
-  $(document).on('click', '#modelChangeBtn', function () {
+  function model_change() {
     if (modelNum == 0) {
       modelPass = './static/models/upload.vrm';
       posepass = '../static/pose/anim2.csv'
@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
     sceneOption()
     newLoad()
     update()
-  })
+  }
 
   // レンダラーの設定
   var canvas = <HTMLCanvasElement>document.getElementById('canvas');
