@@ -13,15 +13,16 @@
 <!-- チャット送信 -->
 <form id="chatSubmitForm" name="example_form" onsubmit="return false;">
     <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Write message">
-    <button id="recStart_" class="recordBtn">録音開始</button>
-    <button id="chatSubmitBtn" onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
+    <button id="recStart_" class="recordBtn"><span class="material-icons">mic</span></button>
+    <button id="recStop_" class="recordBtn" style="display:none"><span class="material-icons">mic_off</span></button>
+    <button id="chatSubmitBtn" onclick="changeHandler(document.getElementById('chatMessage'))"><span class="material-icons">send</span></button>
 </form>
 
 <!-- モデル変更フォーム -->
 <div id="modelChangeArea">
     <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
         <input id="upFile" type="file" name="the_file">
-        <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))">upload</button>
+        <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
     </form>
 </div>
 
@@ -30,7 +31,7 @@
     <form id="renameForm" action="/rename" method="post" onsubmit="return false;">
         <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
         <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
-        <button id="rename" onclick="changeUserName()">submit</button>
+        <button id="rename" onclick="changeUserName()"><span class="material-icons">drive_file_rename_outline</span></button>
     </form>
 </div>
 
@@ -88,7 +89,7 @@
         }).fail(function (data) { // 失敗した場合実行される
             console.log("Ajax通信 失敗");
 
-            var errorMsg = '送信エラーが発生しました';
+            var errorMsg = '<span class="material-icons">error</span >送信エラーが発生しました';
             $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + errorMsg + "</div></div>");
         });
     }
