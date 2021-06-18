@@ -77,6 +77,9 @@
 
         }).fail(function (data) { // 失敗した場合実行される
             console.log("Ajax通信 失敗");
+
+            var errorMsg = '送信エラーが発生しました';
+            $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + errorMsg + "</div></div>");
         });
     }
 
