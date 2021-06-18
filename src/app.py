@@ -15,6 +15,15 @@ def index():
     return render_template("index.html")
 
 
+@app.route('/rename', methods=['POST'])
+def rename():
+    session['user_name'] = request.form['user_name']
+    session['bot_name'] = request.form['bot_name']
+
+    print(session['user_name'])
+    return render_template("chat.html")
+
+
 @app.route('/user_rename', methods=['POST'])
 def user():
     session['user_name'] = request.form['user_name']
@@ -26,6 +35,7 @@ def bot():
     session['bot_name'] = request.form['bot_name']
     
     return ""
+
 
 
 @app.route("/chat", methods=["POST"])

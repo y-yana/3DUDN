@@ -8,4 +8,4 @@ WORKDIR $project_dir
 
 RUN pip install -r requirements.txt
 
-ENV FLASK_APP '/home/3DUDN/src/app.py'
+#ENV FLASK_APP '/home/3DUDN/src/app.py'
