@@ -32,6 +32,7 @@
     function changeHandler(input_value) {
         const chatMessage = $(input_value).serialize();
 
+        // 送受信時間
         var sendTime = new Date();
         var Hour = sendTime.getHours();
         var Min = sendTime.getMinutes();
@@ -68,7 +69,7 @@
             const message = JSON.parse(data.values).message
 
             // 受信メッセージの表示
-            $("#chatLogs").append("<div class='chatLog'>" + message + "</div>");
+            $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + message + "</div><span id = 'sendTime' >" + Hour + ": " + Min + "</span ></div>");
 
             // 受信メッセージの読み上げ
             const text = new SpeechSynthesisUtterance(message);
@@ -76,6 +77,9 @@
 
         }).fail(function (data) { // 失敗した場合実行される
             console.log("Ajax通信 失敗");
+
+            var errorMsg = '送信エラーが発生しました';
+            $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + errorMsg + "</div></div>");
         });
     }
 
