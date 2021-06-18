@@ -102,11 +102,11 @@ window.addEventListener("DOMContentLoaded", () => {
     } catch (e) {
       console.log(e)
     }
-    return null
+    return ""
   }
 
   // CSV → hierarchy
-  const csv2hierarchy = (csv, fps: number) => {
+  const csv2hierarchy = (csv:string, fps: number) => {
     // 文字列 → 配列
     let lines = csv.trim().split('\n')
     let data: number[][] = []
