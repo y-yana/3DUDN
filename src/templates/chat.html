@@ -24,6 +24,12 @@
     </form>
 </div>
 
+<form id="renameForm" action="/rename" method="post" onsubmit="return false;">
+    <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
+    <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
+    <button id="rename" onclick="changeUserName()">submit</button>
+</form>
+
 <canvas id="canvas" width="430px" height="600px"></canvas>
 
 <script src="static/main.js"></script>
@@ -110,6 +116,15 @@
         });
 
     };
+
+    function changeUserName() {
+    const newName = $('#renameForm').serialize();
+    $.ajax("/rename", {
+        type: "post",
+        data: newName,  // POSTでサーバーに送信するデータ
+        dataType: "json",
+    });
+}
 </script>
 
 {% endblock %}
