@@ -1,22 +1,26 @@
 {% extends "layout.html" %}{% block content %}
 
+<!-- ローディング -->
 <div id="loading">
     <div class="loader bluelight">
         <p>Now Loading...</p>
     </div>
 </div>
 
+<!-- チャットエリア -->
 <div id="chatArea">
     <div id="chatLogs">
     </div>
 </div>
 
+<!-- チャット送信 -->
 <form id="chatSubmitForm" name="example_form" onsubmit="return false;">
     <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Write message">
     <button id="recStart_" class="recordBtn">録音開始</button>
     <button id="chatSubmitBtn" onclick="changeHandler(document.getElementById('chatMessage'))">submit</button>
 </form>
 
+<!-- モデル変更フォーム -->
 <div id="modelChangeArea">
     <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
         <input id="upFile" type="file" name="the_file">
@@ -24,12 +28,16 @@
     </form>
 </div>
 
-<form id="renameForm" action="/rename" method="post" onsubmit="return false;">
-    <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
-    <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
-    <button id="rename" onclick="changeUserName()">submit</button>
-</form>
+<!-- 名前変更フォーム -->
+<div id="renameArea">
+    <form id="renameForm" action="/rename" method="post" onsubmit="return false;">
+        <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
+        <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
+        <button id="rename" onclick="changeUserName()">submit</button>
+    </form>
+</div>
 
+<!-- モデル表示エリア -->
 <canvas id="canvas" width="430px" height="600px"></canvas>
 
 <script src="static/main.js"></script>
@@ -56,7 +64,6 @@
 
             // 関数抜ける
             return '';
-
         };
 
         // 送信メッセージの表示
@@ -89,6 +96,7 @@
         });
     }
 
+
     // モデル変更機能
     function uploadFormSubmit(input_value) {
         var formData = new FormData($('#uploadForm')[0]);
@@ -105,26 +113,28 @@
             var child = document.getElementById('uploadForm');
             parent.removeChild(child);
 
-            // #modelChangeBtnを追加
-            var newElement = document.createElement("button");
-            var newContent = document.createTextNode("Model Change");
-            newElement.appendChild(newContent);
-            newElement.setAttribute("id", "modelChangeBtn");
-            parent.appendChild(newElement);
         }).fail(function () {
             console.log('fail');
         });
 
     };
 
+
+    // 名前変更機能
     function changeUserName() {
     const newName = $('#renameForm').serialize();
+
     $.ajax("/rename", {
         type: "post",
         data: newName,  // POSTでサーバーに送信するデータ
         dataType: "json",
     });
-}
+
+    // form要素の削除
+    var parent = document.getElementById('renameArea');
+    var child = document.getElementById('renameForm');
+    parent.removeChild(child);
+    }
 </script>
 
 {% endblock %}
