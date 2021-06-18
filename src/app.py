@@ -17,22 +17,15 @@ def index():
 
 @app.route('/user_rename', methods=['POST'])
 def user():
-    #session['user_name'] = request.form['user_name']
-    res = response(request.form['user_name'])
-    return_json = {
-        "message": res
-    }
-    return jsonify(values=json.dumps(return_json))
+    session['user_name'] = request.form['user_name']
+    return ""
 
 
 @app.route('/bot_rename', methods=['POST'])
 def bot():
-    #session['bot_name'] = request.form['bot_name']
-    res = response(request.form['bot_name'])
-    return_json = {
-        "message": res
-    }
-    return jsonify(values=json.dumps(return_json))
+    session['bot_name'] = request.form['bot_name']
+    
+    return ""
 
 
 @app.route("/chat", methods=["POST"])
