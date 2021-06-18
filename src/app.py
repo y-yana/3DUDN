@@ -21,26 +21,11 @@ def rename():
     session['bot_name'] = request.form['bot_name']
 
     print(session['user_name'])
+    print(session['bot_name'])
+
     return render_template("chat.html")
+    #return ""
 
-
-@app.route('/user_rename', methods=['POST'])
-def user():
-    session['user_name'] = request.form['user_name']
-    return ""
-
-
-@app.route('/bot_rename', methods=['POST'])
-def bot():
-    session['bot_name'] = request.form['bot_name']
-    
-    return ""
-
-
-
-@app.route("/chat", methods=["POST"])
-def move_chat():
-    return render_template("chat.html")
 
 # /showにPOSTリクエストが送られたら処理してJSONを返す
 @app.route('/show', methods=['POST'])
