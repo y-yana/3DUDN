@@ -7,21 +7,15 @@ import { updateArrayBindingPattern } from 'typescript';
 window.addEventListener("DOMContentLoaded", () => {
   var modelPass = './static/models/base.vrm';
   var posepass = '../static/pose/anim.csv'
-  var modelNum = 0
 
-  $(document).on('click', '#modelChangeBtn', function () {
-    if (modelNum == 0) {
-      modelPass = './static/models/upload.vrm';
-      posepass = '../static/pose/anim2.csv'
-      modelNum = 1;
-    } else {
-      modelNum = 0;
-      modelPass = './static/models/base.vrm';
-      posepass = '../static/pose/anim.csv'
-    }
+  $(document).on('click', '#uploadBtn', function () {
+    modelPass = './static/models/upload.vrm';
+    posepass = '../static/pose/anim2.csv'
 
+    // 現在のモデルを削除
     scene.remove.apply(scene, scene.children);
 
+    // 再描画
     sceneOption()
     newLoad()
     update()
