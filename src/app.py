@@ -12,7 +12,7 @@ def index():
     #return "Hello World"
     session['user_name'] = 'master'
     session['bot_name'] = 'bot'
-    return render_template("index.html")
+    return render_template("chat.html")
 
 
 @app.route('/rename', methods=['POST'])
@@ -23,8 +23,8 @@ def rename():
     print(session['user_name'])
     print(session['bot_name'])
 
-    return render_template("chat.html")
-    #return ""
+    #return render_template("chat.html")
+    return ""
 
 
 # /showにPOSTリクエストが送られたら処理してJSONを返す
