@@ -24,10 +24,10 @@
     </form>
 </div>
 
-<form action="/rename" method="post" onsubmit="return false;">
+<form id="renameForm" action="/rename" method="post" onsubmit="return false;">
     <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
     <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
-    <button id="rename" onclick="changeUserName(document.getElementById('user_name'),document.getElementById('bot_name'))">submit</button>
+    <button id="rename" onclick="changeUserName()">submit</button>
 </form>
 
 <canvas id="canvas" width="430px" height="600px"></canvas>
@@ -117,22 +117,12 @@
 
     };
 
-    function changeUserName(input_user,input_bot) {
-    const user_name = $(input_user).serialize();
-    const bot_name = $(input_bot).serialize();
-    console.log(user_name)
-    console.log(bot_name)
+    function changeUserName() {
+    const newName = $('#renameForm').serialize();
     $.ajax("/rename", {
         type: "post",
-        data: [user_name,bot_name],  // POSTでサーバーに送信するデータ
+        data: newName,  // POSTでサーバーに送信するデータ
         dataType: "json",
-    }).done(function (data) { // 成功した場合実行される
-        console.log("Ajax通信 成功");
-        const message = JSON.parse(data.values).message
-        console.log(message);
-
-    }).fail(function (data) { // 失敗した場合実行される
-        console.log("Ajax通信 失敗");
     });
 }
 </script>
