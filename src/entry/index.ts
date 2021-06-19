@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 初期値
   var modelPass = './static/models/base.vrm';
-  var posepass = '../static/pose/anim.csv'
+  var posepass = '../static/pose/hellovrm.csv'
 
   $(document).on('click', '#modelChange', function () {
     // pathの受け取り
@@ -140,6 +140,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
       hierarchy[i] = { 'keys': keys }
     }
+    //vroid用のsplice
     hierarchy.splice(23, 1)
 
     return hierarchy
