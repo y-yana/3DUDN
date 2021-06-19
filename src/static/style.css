@@ -524,3 +524,51 @@ template {
   }
 }
 /* mobileここまで */
+#mainArea {
+  width: fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+#mainArea #chatArea {
+  background-color: #ffffff;
+  width: 25rem;
+  position: relative;
+}
+#mainArea #chatArea #chatSubmitForm {
+  width: 100%;
+  background-color: #0aafe6;
+  position: absolute;
+  bottom: 0;
+  padding: 1rem 0;
+}
+#mainArea #chatArea #chatSubmitForm #chatSubmitFormItem {
+  width: fit-content;
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 5rem;
+  padding: 0.5rem 1.3rem;
+  margin: 0 auto;
+  gap: 1rem;
+}
+#mainArea #chatArea #chatSubmitForm #chatSubmitFormItem #chatMessage {
+  width: 15rem;
+}
+#mainArea #chatArea #chatSubmitForm #chatSubmitBtn {
+  color: #0059be;
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #mainArea {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  #mainArea #chatArea {
+    width: 22rem;
+    margin: 0 auto;
+  }
+}
+/* mobileここまで */

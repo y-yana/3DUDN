@@ -12,40 +12,45 @@
 <div id="loadingArea">
 </div>
 
-<!-- チャットエリア -->
-<div id="chatArea">
-    <div id="chatLogs">
-    </div>
-</div>
-
-<!-- チャット送信 -->
-<form id="chatSubmitForm" name="example_form" onsubmit="return false;">
-    <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Ctrl+Enter で送信">
-    <button id="recStart_" class="recordBtn"><span class="material-icons">mic</span></button>
-    <button id="recStop_" class="recordBtn" style="display:none"><span class="material-icons">mic_off</span></button>
-    <button id="chatSubmitBtn" onclick="changeHandler(document.getElementById('chatMessage'))"><span class="material-icons">send</span></button>
-</form>
-
-<!-- モデル変更フォーム -->
-<div id="modelChangeArea">
-    <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
-        <input id="upFile" type="file" name="the_file">
-        <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
-    </form>
-</div>
-<button id="modelChange" style="display: none;"></button>
-
 <!-- 名前変更フォーム -->
 <div id="renameArea">
     <form id="renameForm" action="/rename" method="post" onsubmit="return false;">
         <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
         <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
-        <button id="rename" onclick="changeUserName()"><span class="material-icons">drive_file_rename_outline</span></button>
+        <button id="rename" onclick="changeUserName()"><span
+                class="material-icons">drive_file_rename_outline</span></button>
     </form>
 </div>
 
-<!-- モデル表示エリア -->
-<div id="modelArea">
+<!-- モデル変更フォーム -->
+<div id="modelChangeArea">
+    <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
+        <input id="upFile" type="file" name="the_file">
+        <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span
+                class="material-icons">upload</span></button>
+    </form>
+</div>
+<button id="modelChange" style="display: none;"></button>
+
+<!-- メイン機能 -->
+<div id="mainArea">
+    <!-- モデル表示エリア -->
+    <div id="modelArea">
+    </div>
+    <!-- チャットエリア -->
+    <div id="chatArea">
+        <div id="chatLogs">
+        </div>
+        <!-- チャット送信 -->
+        <form id="chatSubmitForm" name="example_form" onsubmit="return false;">
+            <div id="chatSubmitFormItem">
+            <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Ctrl+Enter で送信">
+            <button id="recStart_" class="recordBtn"><span class="material-icons">mic</span></button>
+            <button id="recStop_" class="recordBtn" style="display:none"><span class="material-icons">mic_off</span></button>
+            <button id="chatSubmitBtn" onclick="changeHandler(document.getElementById('chatMessage'))"><span class="material-icons">send</span></button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <script src="static/main.js"></script>

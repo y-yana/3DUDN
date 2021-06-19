@@ -1,0 +1,47 @@
+#mainArea{
+  width: fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  #chatArea{
+    background-color: $BG-chatArea;
+    width: 25rem;
+    position: relative;
+    #chatSubmitForm{
+      width: 100%;
+      background-color: $BG-chatSubmitForm;
+      position: absolute;
+      bottom: 0;
+      padding: 1rem 0;
+      #chatSubmitFormItem{
+        width: fit-content;
+        display: flex;
+        background-color: $BG-chat-input;
+        border-radius: 5rem;
+        padding: 0.5rem 1.3rem;
+        margin: 0 auto;
+        gap: 1rem;
+        #chatMessage{
+          width: 15rem;
+        }
+      }
+      #chatSubmitBtn{
+        color: $icon-submit-true;
+      }
+    }
+  }
+}
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #mainArea{
+  flex-direction: column;
+  gap: 2rem;
+  #chatArea{
+    width: 22rem;
+    margin: 0 auto;
+  }
+}
+}
+/* mobileここまで */
