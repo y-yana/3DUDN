@@ -5,11 +5,28 @@ import { VRM, VRMSchema } from '@pixiv/three-vrm'
 import { updateArrayBindingPattern } from 'typescript';
 
 window.addEventListener("DOMContentLoaded", () => {
+  // canvasサイズの制御
+  // 画面サイズを取得
+  var getWidth = window.innerWidth;
+  var getHeight = window.innerHeight;
+
+  // 比率計算
+  var newWidth = Math.floor(getWidth*(2/5))
+  var newHeight = Math.floor(getHeight * (4 / 5))
+
+  // canvas生成
+  var modelArea = document.getElementById('modelArea');
+  modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';
+
+  // 初期値
   var modelPass = './static/models/base.vrm';
   var posepass = '../static/pose/hellovrm.csv'
 
-  $(document).on('click', '#uploadBtn', function () {
-    modelPass = './static/models/upload.vrm';
+  $(document).on('click', '#modelChange', function () {
+    // pathの受け取り
+    var path = <HTMLInputElement>document.getElementById("modelChange");
+
+    modelPass = path.value;
     posepass = '../static/pose/anim2.csv'
 
     // 現在のモデルを削除
