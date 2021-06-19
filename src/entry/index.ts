@@ -25,6 +25,10 @@ window.addEventListener("DOMContentLoaded", () => {
     newHeight = Math.floor(getHeight * (4 / 5))
   }
 
+  // #chatAreaの高さを設定
+  var chatArea = document.getElementById('chatArea');
+  chatArea!.style.height = newHeight + 'px';
+
   // canvas生成
   var modelArea = document.getElementById('modelArea');
   modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';

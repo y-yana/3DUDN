@@ -72,7 +72,10 @@
             var null_message = 'ちょっとよく聞こえなかったから、もう一回言ってほしいな〜'
 
             // 返事の表示
-            $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + null_message + "</div><span id = 'sendTime' >" + Hour + ": " + Min + "</span ></div>");
+            $("#chatLogs").append("<div id='chatTimeGet'><div id='getMessage' class='chatMessage'><div class='chatLog'>" + null_message + "</div></div><span id = 'sendTime' >" + Hour + ": " + Min + "</span ></div>");
+
+            // 自動スクロール
+            $('#chatArea').animate({ scrollTop: $('#chatArea')[0].scrollHeight }, 'fast');
 
             // 返事の読み上げ
             const text = new SpeechSynthesisUtterance(null_message);
@@ -83,7 +86,11 @@
         };
 
         // 送信メッセージの表示
-        $("#chatLogs").append("<div class='chatMessage'><span id = 'sendTime' >" + Hour + ": " + Min + "</span ><div class='chatLog'>" + input_value.value + "</div></div>");
+        $("#chatLogs").append("<div id='chatTimeSend'><span id = 'sendTime' >" + Hour + ": " + Min + "</span ><div id='sendMessage' class='chatMessage'><div class='chatLog'>" + input_value.value + "</div></div></div>");
+
+        // 自動スクロール
+        $('#chatArea').animate({ scrollTop: $('#chatArea')[0].scrollHeight }, 'fast');
+
         // 入力欄の初期化
         document.getElementById('chatMessage').value = "";
 
@@ -98,7 +105,10 @@
             const message = JSON.parse(data.values).message
 
             // 受信メッセージの表示
-            $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + message + "</div><span id = 'sendTime' >" + Hour + ": " + Min + "</span ></div>");
+            $("#chatLogs").append("<div id='chatTimeGet'><div id='getMessage' class='chatMessage'><div class='chatLog'>" + message + "</div></div><span id = 'sendTime' >" + Hour + ": " + Min + "</span ></div>");
+
+            // 自動スクロール
+            $('#chatArea').animate({ scrollTop: $('#chatArea')[0].scrollHeight }, 'fast');
 
             // 受信メッセージの読み上げ
             const text = new SpeechSynthesisUtterance(message);
