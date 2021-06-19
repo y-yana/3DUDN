@@ -1,1 +1,0 @@
-web: gunicorn --config ./src/app app:app --log-file -
