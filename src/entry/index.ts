@@ -20,7 +20,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 初期値
   var modelPass = './static/models/base.vrm';
-  var posepass = '../static/pose/hellovrm2.csv';
+  var posepass = '../static/pose/hellovrm.csv';
+  var facemode = "fun";
 
   $(document).on('click', '#modelChange', function () {
     // pathの受け取り
@@ -28,6 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     modelPass = path.value;
     posepass = '../static/pose/anim2.csv'
+    facemode = "sad";//試し用悲しみ
 
     // 現在のモデルを削除
     scene.remove.apply(scene, scene.children);
@@ -166,9 +168,16 @@ window.addEventListener("DOMContentLoaded", () => {
       track.name = track.name.replace(/^\.bones\[([^\]]+)\].(position|quaternion|scale)$/, '$1.$2')
     })
 
-    vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Fun, 0.5)
-    vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.I, 0.11)
-    vrm.blendShapeProxy.update()
+    if (facemode == "fun") {
+      vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Fun, 0.5)
+      vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.I, 0.11)
+      vrm.blendShapeProxy.update()
+    }
+    if (facemode == "sad") {
+      vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Angry, 0.22)
+      vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Sorrow, 0.43)
+      vrm.blendShapeProxy.update()
+    }
 
     // AnimationMixerの生成と再生
     mixer = new THREE.AnimationMixer(vrm.scene)
