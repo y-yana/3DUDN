@@ -322,6 +322,7 @@ template {
   opacity: 1;
 }
 #opening #openingContents img {
+  display: block;
   width: 25rem;
   margin: 0 auto;
 }
@@ -347,7 +348,6 @@ template {
 }
 /* mobileここまで */
 #loading {
-  /* 画面いっぱいになる箇所 */
   width: 100vw;
   height: 100vh;
   background-color: #ffffff;
@@ -438,3 +438,5 @@ template {
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
+/* mobileここから */
+/* mobileここまで */

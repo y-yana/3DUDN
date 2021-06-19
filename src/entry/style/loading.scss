@@ -1,18 +1,11 @@
 #loading {
-  /* 画面いっぱいになる箇所 */
-  //display: flex;
-  //justify-content: center;
-  //align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #ffffff;
-  //transition: all 1s;
+  background-color: $BG-modal;
   position: fixed;
-  //top: 0;
-  //left: 0;
   z-index: 9999;
   font-family: "Squada One", sans-serif;
-  color: #daf6ff;
+  color: $loading-color-thin;
 
   &.loaded {
     opacity: 0;
@@ -109,3 +102,9 @@
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+
+}
+/* mobileここまで */
