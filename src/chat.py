@@ -2,7 +2,12 @@
 import requests
 import json
 
-def response(word,u_name,b_name):
+def response(word,u_name,b_name,np):
+
+    if np>=3 and word=='好き':
+        return 'いっぱいちゅき'
+        
+        
     # リクエストに必要なパラメーター
     headers = {'content-type':'text/json'}
     payload = {'utterance':word,
