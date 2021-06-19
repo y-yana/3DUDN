@@ -310,10 +310,15 @@ template {
   z-index: 9000;
 }
 #opening #openingContents {
+  opacity: 0;
+  transition: 1500ms;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
+}
+#opening #openingContents.is-fadein {
+  opacity: 1;
 }
 #opening #openingContents img {
   width: 25rem;

@@ -8,10 +8,16 @@
   z-index: 9000;
 
   #openingContents{
+    opacity: 0;
+    transition: 1500ms;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
+
+    &.is-fadein {
+      opacity: 1
+    }
 
     img{
       width: 25rem;
