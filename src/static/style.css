@@ -302,6 +302,7 @@ template {
   display: none;
 }
 
+/* 変数宣言 */
 #opening {
   width: 100vw;
   height: 100vh;
@@ -322,6 +323,7 @@ template {
 }
 #opening #openingContents img {
   width: 25rem;
+  margin: 0 auto;
 }
 #opening #openingContents #openingText {
   width: fit-content;
@@ -333,6 +335,17 @@ template {
   margin: 0 auto;
 }
 
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #opening #openingContents img {
+    width: 15rem;
+  }
+  #opening #openingContents #openingText {
+    font-size: 1.3rem;
+    gap: 0 0.8rem;
+  }
+}
+/* mobileここまで */
 #loading {
   /* 画面いっぱいになる箇所 */
   width: 100vw;

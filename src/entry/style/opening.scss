@@ -3,7 +3,7 @@
 #opening{
   width: 100vw;
   height: 100vh;
-  background-color: #ffffff;
+  background-color: $BG-modal;
   position: fixed;
   z-index: 9000;
 
@@ -21,16 +21,33 @@
 
     img{
       width: 25rem;
+      margin: 0 auto;
     }
 
     #openingText{
       width: fit-content;
       display: flex;
       font-family: 'Gruppo', cursive;
-      color: #013E6A;
+      color: $logo-main-color;
       font-size: 1.7rem;
       gap: 0 1rem;
       margin: 0 auto;
     }
   }
 }
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #opening{
+    #openingContents{
+      img{
+        width: 15rem;
+      }
+      #openingText{
+        font-size: 1.3rem;
+        gap: 0 0.8rem;
+      }
+    }
+  }
+}
+/* mobileここまで */
