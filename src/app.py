@@ -15,7 +15,7 @@ def index():
     #return "Hello World"
     session['user_name'] = 'master'
     session['bot_name'] = 'bot'
-    return render_template("chat.html")
+    return render_template("index.html")
 
 
 @app.route('/rename', methods=['POST'])
@@ -56,7 +56,7 @@ def upload():
     return_json = {
         "path": path
     }
-    
+
     return jsonify(values=json.dumps(return_json))
 
 
