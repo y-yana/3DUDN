@@ -50,6 +50,9 @@
 
 <script src="static/main.js"></script>
 <script>
+    // グローバル関数を定義
+    var path = 'path!!'
+
     // チャット機能
     function changeHandler(input_value) {
         const chatMessage = $(input_value).serialize();
@@ -141,7 +144,7 @@
             parent.removeChild(child);
 
             //PATHの受取
-            var path = JSON.parse(data.values).path
+            path = JSON.parse(data.values).path
 
             var modelChangeBtn = document.getElementById("modelChange")
 
