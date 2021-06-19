@@ -94,6 +94,7 @@
 
             //ネガポジの受取
             const NP =JSON.parse(data.values).NP
+            const ALL_NP =JSON.parse(data.values).ALL_NP
 
             // 受信メッセージの表示
             $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + message + "</div><span id = 'sendTime' >" + Hour + ": " + Min + "</span ></div>");
