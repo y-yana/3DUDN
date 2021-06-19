@@ -86,7 +86,7 @@ eval("\nbubbly({\n    colorStart: '#6edbff',\n    colorStop: '#6edbff',\n    blu
   \**********************************/
 /***/ (() => {
 
-eval("\ndocument.getElementById(\"chatSubmitForm\").onkeydown = function (event) {\n    if (event.key === 'Enter') {\n        event.preventDefault();\n    }\n};\n\n\n//# sourceURL=webpack:///./src/entry/js/enterKey.js?");
+eval("\ndocument.getElementById(\"chatSubmitForm\").onkeydown = function (event) {\n    if (event.ctrlKey && event.key === 'Enter') {\n        changeHandler(document.getElementById('chatMessage'));\n        event.preventDefault();\n    }\n    else if (event.key === 'Enter') {\n        event.preventDefault();\n    }\n};\n\n\n//# sourceURL=webpack:///./src/entry/js/enterKey.js?");
 
 /***/ }),
 
