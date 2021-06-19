@@ -4,6 +4,7 @@ from chat import response
 import os
 import datetime
 import random, string
+from negaposi.negaposi import negaposi
 app = Flask(__name__)
 
 app.secret_key = 'secret'
@@ -37,8 +38,16 @@ def show():
     b_name=session['bot_name']
     res = response(request.form['chatMessage'],u_name,b_name)
 
+    npi=negaposi(request.form['chatMessage'])
+    npo=negaposi(res)
+
+    print(npi)
+    print(npo)
+    NP=npi+npo
+
     return_json = {
         "message": res
+        "NP": NP
     }
 
     return jsonify(values=json.dumps(return_json))
