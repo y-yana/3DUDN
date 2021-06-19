@@ -137,6 +137,9 @@
             var child = document.getElementById('uploadForm');
             parent.removeChild(child);
 
+            //PATHの受取
+            const message = JSON.parse(data.values).path
+
             // loading要素の削除
             $('#loading').fadeOut('normal');
 
