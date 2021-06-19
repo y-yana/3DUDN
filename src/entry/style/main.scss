@@ -6,7 +6,6 @@
   flex-direction: row;
   gap: 3rem;
   #chatArea{
-    //background-color: $BG-chatArea;
     background: linear-gradient(180deg, #ffffff 0%, #ffffff 90%, $BG-chatSubmitForm 90%, $BG-chatSubmitForm 100%);
     width: 25rem;
     border-radius: 25px;
@@ -34,19 +33,21 @@
           position: relative;
           display: inline-block;
           margin-right: 15px;
-          padding: 7px 10px;
           min-width: 120px;
           max-width: 100%;
-          font-size: 16px;
-          background: #e0edff;
+          background: $BG-send-message;
+          max-width: 15rem;
+          border-radius: 15px;
+          padding: 0.7rem 1rem;
+          box-shadow: 3px 3px 8px $shadow-send-message;
           &::before{
             content: "";
             position: absolute;
-            top: 50%;
-            left: 100%;
+            top: 70%;
+            left: 95%;
             margin-top: -15px;
-            border: 15px solid transparent;
-            border-left: 15px solid #e0edff;
+            border: 10px solid transparent;
+            border-left: 25px solid $BG-send-message;
           }
           .chatLog{
             margin: 0;
@@ -67,16 +68,19 @@
             padding: 7px 10px;
             min-width: 120px;
             max-width: 100%;
-            font-size: 16px;
-            background: #e0edff;
+            background: $BG-get-message;
+            max-width: 15rem;
+            border-radius: 15px;
+            padding: 0.7rem 1rem;
+            box-shadow: 3px 3px 8px $shadow-send-message;
             &::before{
               content: "";
               position: absolute;
-              top: 50%;
+              top: 70%;
               left: -30px;
               margin-top: -15px;
-              border: 15px solid transparent;
-              border-right: 15px solid #e0edff;
+              border: 10px solid transparent;
+              border-right: 25px solid $BG-get-message;
             }
           }
         }
