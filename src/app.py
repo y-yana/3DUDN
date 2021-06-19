@@ -2,13 +2,12 @@ from flask import Flask, render_template, jsonify, request,session
 import json
 from chat import response
 import os
+import datetime
 import random, string
 app = Flask(__name__)
 
 app.secret_key = 'secret'
 #app.permanent_session_lifetime = timedelta(minutes=5)
-def randomname(n=5):
-   return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
 
 @app.route('/')
 def index():
@@ -48,10 +47,19 @@ def show():
 def upload():
     the_file = request.files['the_file']
 
-
-    random=randomname(n=5)
-    path=f'./static/models/upload{random}.vrm'
+    model_dir='./static/models/'
+    model_files = os.listdir(model_dir)
+    model_files.sort()
+    print(model_files)
+    if len(model_files)>=7:
+        os.remove(model_dir+model_files[0])
+    
+    now = datetime.datetime.now()
+    file_name = '{0:%d%H%M%S}'.format(now)
+    
+    path=f'./static/models/{file_name}.vrm'
     the_file.save(path)
+
 
     return_json = {
         "path": path
