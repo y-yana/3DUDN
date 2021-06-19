@@ -6,7 +6,7 @@ import { updateArrayBindingPattern } from 'typescript';
 
 window.addEventListener("DOMContentLoaded", () => {
   var modelPass = './static/models/base.vrm';
-  var posepass = '../static/pose/anim.csv'
+  var posepass = '../static/pose/hellovrm.csv'
 
   $(document).on('click', '#uploadBtn', function () {
     modelPass = './static/models/upload.vrm';
@@ -123,6 +123,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
       hierarchy[i] = { 'keys': keys }
     }
+    //vroid用のsplice
     hierarchy.splice(23, 1)
 
     return hierarchy
