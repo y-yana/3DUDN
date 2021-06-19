@@ -19,9 +19,11 @@ window.addEventListener("DOMContentLoaded", () => {
   modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';
 
   // 初期値
-  var modelPass ='../static/base_model/base.vrm';
+  var modelPass = '../static/base_model/base.vrm';
   var posepass = '../static/pose/hellovrm.csv';
   var facemode = "fun";
+  var NP
+  var ALL_NP
 
   $(document).on('click', '#modelChange', function () {
     // pathの受け取り
@@ -191,6 +193,23 @@ window.addEventListener("DOMContentLoaded", () => {
   // フレーム毎に呼ばれる
   const update = () => {
     requestAnimationFrame(update)
+
+    NP = <HTMLInputElement>document.getElementById('NPscript');
+    ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
+    if (Number(NP.value) > 0) {
+      facemode = "fun"
+      console.log("嬉しいよ")
+      //newLoad()
+    }
+    if (Number(NP.value) < 0) {
+      facemode = "sad"
+      console.log("悲しいな")
+      //newLoad()
+    }
+    if (Number(NP.value) > 0) {
+      posepass = '../static/pose/anim3.csv'
+      //newLoad()
+    }
 
     // 時間計測
     let time = (new Date()).getTime()

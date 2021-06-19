@@ -52,8 +52,7 @@ def show():
     return_json = {
         "message": res,
         "NP":NP,
-        "ALL_NP",session['negaposi']
-        
+        "ALL_NP":session['negaposi']
     }
 
     return jsonify(values=json.dumps(return_json))
