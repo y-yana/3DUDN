@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", () => {
   var getHeight = window.innerHeight;
 
   // 比率計算
-  var newWidth = Math.floor(getWidth*(2/5))
+  var newWidth = Math.floor(getWidth * (2 / 5))
   var newHeight = Math.floor(getHeight * (4 / 5))
 
   // canvas生成
@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 初期値
   var modelPass = './static/models/base.vrm';
-  var posepass = '../static/pose/hellovrm.csv'
+  var posepass = '../static/pose/hellovrm2.csv';
 
   $(document).on('click', '#modelChange', function () {
     // pathの受け取り
@@ -165,6 +165,10 @@ window.addEventListener("DOMContentLoaded", () => {
     clip.tracks.some((track) => {
       track.name = track.name.replace(/^\.bones\[([^\]]+)\].(position|quaternion|scale)$/, '$1.$2')
     })
+
+    vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Fun, 0.5)
+    vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.I, 0.11)
+    vrm.blendShapeProxy.update()
 
     // AnimationMixerの生成と再生
     mixer = new THREE.AnimationMixer(vrm.scene)
