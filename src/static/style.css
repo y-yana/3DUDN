@@ -524,6 +524,15 @@ template {
   }
 }
 /* mobileここまで */
+#header {
+  width: 100vw;
+  background-color: #f4fbff;
+}
+#header img {
+  width: 30%;
+  margin: 0.8rem 0 0.5rem 2.5rem;
+}
+
 #mainArea {
   width: fit-content;
   height: fit-content;

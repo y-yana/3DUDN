@@ -12,25 +12,9 @@
 <div id="loadingArea">
 </div>
 
-<!-- 名前変更フォーム -->
-<div id="renameArea">
-    <form id="renameForm" action="/rename" method="post" onsubmit="return false;">
-        <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
-        <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
-        <button id="rename" onclick="changeUserName()"><span
-                class="material-icons">drive_file_rename_outline</span></button>
-    </form>
+<div id="header">
+    <img src="../static/images/logo.png">
 </div>
-
-<!-- モデル変更フォーム -->
-<div id="modelChangeArea">
-    <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
-        <input id="upFile" type="file" name="the_file">
-        <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span
-                class="material-icons">upload</span></button>
-    </form>
-</div>
-<button id="modelChange" style="display: none;"></button>
 
 <!-- メイン機能 -->
 <div id="mainArea">
@@ -52,6 +36,26 @@
         </form>
     </div>
 </div>
+
+<!-- 名前変更フォーム -->
+<div id="renameArea">
+    <form id="renameForm" action="/rename" method="post" onsubmit="return false;">
+        <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
+        <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
+        <button id="rename" onclick="changeUserName()"><span
+                class="material-icons">drive_file_rename_outline</span></button>
+    </form>
+</div>
+
+<!-- モデル変更フォーム -->
+<div id="modelChangeArea">
+    <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
+        <input id="upFile" type="file" name="the_file">
+        <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span
+                class="material-icons">upload</span></button>
+    </form>
+</div>
+<button id="modelChange" style="display: none;"></button>
 
 <script src="static/main.js"></script>
 <script>
