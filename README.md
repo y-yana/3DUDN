@@ -10,7 +10,7 @@
 ## &#x1f4bb; 使用技術
 - HTML
 - CSS ( Sass )
-- JavaScript ( jQuery )
+- JavaScript ( jQuery / Three.js )
 - TypeScript
 - Python ( Flask )
 - webpack
