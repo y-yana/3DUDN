@@ -1,22 +1,38 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request,session
 import json
 from chat import response
 import os
 app = Flask(__name__)
 
+app.secret_key = 'secret'
+#app.permanent_session_lifetime = timedelta(minutes=5)
+
 @app.route('/')
 def index():
     #return "Hello World"
-    return render_template("index.html")
-
-@app.route("/chat", methods=["POST"])
-def move_chat():
+    session['user_name'] = 'master'
+    session['bot_name'] = 'bot'
     return render_template("chat.html")
+
+
+@app.route('/rename', methods=['POST'])
+def rename():
+    session['user_name'] = request.form['user_name']
+    session['bot_name'] = request.form['bot_name']
+
+    print(session['user_name'])
+    print(session['bot_name'])
+
+    #return render_template("chat.html")
+    return ""
+
 
 # /showにPOSTリクエストが送られたら処理してJSONを返す
 @app.route('/show', methods=['POST'])
 def show():
-    res = response(request.form['chatMessage'])
+    u_name=session['user_name']
+    b_name=session['bot_name']
+    res = response(request.form['chatMessage'],u_name,b_name)
 
     return_json = {
         "message": res
