@@ -439,4 +439,88 @@ template {
   }
 }
 /* mobileここから */
+@media screen and (max-width: 950px) {
+  #loading {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 9999;
+    font-family: "Squada One", sans-serif;
+    color: #daf6ff;
+  }
+  #loading.loaded {
+    opacity: 0;
+    visibility: hidden;
+    transition: 1s;
+  }
+  #loading .bluelight {
+    display: table;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: content-box;
+  }
+  #loading .bluelight p {
+    display: table-cell;
+    font-size: 1.5rem;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    transition: background 1s, border-width 0.5s cubic-bezier(0.075, 0.82, 0.165, 1), text-shadow 0.5s;
+    color: #3e6d7e;
+    box-shadow: 0 0 0 rgba(10, 175, 230, 0), inset 0 0 0 rgba(10, 175, 230, 0);
+    background-image: radial-gradient(center, ellipse cover, rgba(10, 175, 230, 0) 0%, rgba(10, 175, 230, 0) 90%);
+    border: 0 dotted rgba(10, 175, 230, 0);
+    box-sizing: content-box;
+    line-height: normal;
+  }
+  #loading .bluelight:before, #loading .bluelight:after,
+#loading .bluelight p:before,
+#loading .bluelight p:after {
+    transition: 0.2s ease-in-out;
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    border: 30px dashed transparent;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #loading .bluelight:before {
+    animation: rotate 20s linear 0s infinite;
+    width: 90%;
+    height: 90%;
+    border: 1.5px dotted rgba(10, 175, 230, 0);
+    border-color: rgba(10, 175, 230, 0.3);
+    z-index: -1;
+  }
+  #loading .bluelight:after {
+    animation: rotate 10s linear 0s infinite reverse;
+    border: 40px dashed rgba(10, 175, 230, 0);
+    border-color: rgba(10, 175, 230, 0.1);
+    width: 80%;
+    height: 80%;
+    z-index: -2;
+  }
+  #loading .bluelight p:before {
+    animation: rotate 5s ease-in-out 0s infinite alternate;
+    width: 60%;
+    height: 60%;
+    border: 25px dashed rgba(10, 175, 230, 0);
+    border-color: rgba(10, 175, 230, 0.3);
+  }
+  #loading .bluelight p:after {
+    animation: rotate 5s linear 0s infinite;
+    border: 9px dashed rgba(10, 175, 230, 0);
+    border-color: rgba(10, 175, 230, 0.3);
+    width: 60%;
+    height: 60%;
+  }
+}
 /* mobileここまで */
