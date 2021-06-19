@@ -3,6 +3,7 @@ import json
 from chat import response
 import os
 import random, string
+from negaposi.negaposi import negaposi
 app = Flask(__name__)
 
 app.secret_key = 'secret'
@@ -36,6 +37,16 @@ def show():
     u_name=session['user_name']
     b_name=session['bot_name']
     res = response(request.form['chatMessage'],u_name,b_name)
+    import os
+    a = os.listdir('./')
+    print(a)
+
+    
+    pi,ni=negaposi(request.form['chatMessage'])
+    po,no=negaposi(res)
+
+    print(pi,ni)
+    print(po,no)
 
     return_json = {
         "message": res
@@ -48,10 +59,19 @@ def show():
 def upload():
     the_file = request.files['the_file']
 
-
-    random=randomname(n=5)
-    path=f'./static/models/upload{random}.vrm'
+    model_dir='./static/models/'
+    model_files = os.listdir(model_dir)
+    model_files.sort()
+    print(model_files)
+    if len(model_files)>=7:
+        os.remove(model_dir+model_files[0])
+    
+    now = datetime.datetime.now()
+    file_name = '{0:%d%H%M%S}'.format(now)
+    
+    path=f'./static/models/{file_name}.vrm'
     the_file.save(path)
+
 
     return_json = {
         "path": path
