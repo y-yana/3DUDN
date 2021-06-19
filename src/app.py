@@ -12,6 +12,7 @@ app.secret_key = 'secret'
 @app.route('/')
 def index():
     #return "Hello World"
+
     session['user_name'] = 'master'
     session['bot_name'] = 'bot'
     return render_template("index.html")
