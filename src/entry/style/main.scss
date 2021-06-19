@@ -4,19 +4,16 @@
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  gap: 3rem;
   #chatArea{
-    background: linear-gradient(180deg, #ffffff 0%, #ffffff 90%, $BG-chatSubmitForm 90%, $BG-chatSubmitForm 100%);
     width: 25rem;
-    border-radius: 25px;
     position: relative;
     overflow: scroll;
     #chatLogs{
-      min-height: 86.5%;
+      min-height: 93%;
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      padding: 1rem;
+      padding: 2rem 1rem;
       position: inherit;
       #sendTime{
         width: fit-content;
@@ -39,7 +36,6 @@
           max-width: 15rem;
           border-radius: 15px;
           padding: 0.7rem 1rem;
-          box-shadow: 3px 3px 8px $shadow-send-message;
           &::before{
             content: "";
             position: absolute;
@@ -72,7 +68,6 @@
             max-width: 15rem;
             border-radius: 15px;
             padding: 0.7rem 1rem;
-            box-shadow: 3px 3px 8px $shadow-send-message;
             &::before{
               content: "";
               position: absolute;
@@ -88,11 +83,8 @@
     }
     #chatSubmitForm{
       width: 100%;
-      background-color: $BG-chatSubmitForm;
       position: sticky;
-      border-radius: 0 0 25px 25px;
       bottom: 0;
-      padding: 1.2rem 0 1.4rem;
       #chatSubmitFormItem{
         width: fit-content;
         display: flex;
@@ -111,6 +103,7 @@
     }
   }
 }
+
 /* mobileここから */
 @media screen and (max-width: 950px) {
   #mainArea{

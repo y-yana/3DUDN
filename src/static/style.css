@@ -530,21 +530,18 @@ template {
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  gap: 3rem;
 }
 #mainArea #chatArea {
-  background: linear-gradient(180deg, #ffffff 0%, #ffffff 90%, #0aafe6 90%, #0aafe6 100%);
   width: 25rem;
-  border-radius: 25px;
   position: relative;
   overflow: scroll;
 }
 #mainArea #chatArea #chatLogs {
-  min-height: 86.5%;
+  min-height: 93%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem;
+  padding: 2rem 1rem;
   position: inherit;
 }
 #mainArea #chatArea #chatLogs #sendTime {
@@ -565,11 +562,10 @@ template {
   margin-right: 15px;
   min-width: 120px;
   max-width: 100%;
-  background: #55c9f0;
+  background: #2bbcff;
   max-width: 15rem;
   border-radius: 15px;
   padding: 0.7rem 1rem;
-  box-shadow: 3px 3px 8px #f0f0f0;
 }
 #mainArea #chatArea #chatLogs #chatTimeSend #sendMessage::before {
   content: "";
@@ -578,7 +574,7 @@ template {
   left: 95%;
   margin-top: -15px;
   border: 10px solid transparent;
-  border-left: 25px solid #55c9f0;
+  border-left: 25px solid #2bbcff;
 }
 #mainArea #chatArea #chatLogs #chatTimeSend #sendMessage .chatLog {
   margin: 0;
@@ -598,11 +594,10 @@ template {
   padding: 7px 10px;
   min-width: 120px;
   max-width: 100%;
-  background: #c9effc;
+  background: #cbeeff;
   max-width: 15rem;
   border-radius: 15px;
   padding: 0.7rem 1rem;
-  box-shadow: 3px 3px 8px #f0f0f0;
 }
 #mainArea #chatArea #chatLogs #chatTimeGet #getMessage::before {
   content: "";
@@ -611,15 +606,12 @@ template {
   left: -30px;
   margin-top: -15px;
   border: 10px solid transparent;
-  border-right: 25px solid #c9effc;
+  border-right: 25px solid #cbeeff;
 }
 #mainArea #chatArea #chatSubmitForm {
   width: 100%;
-  background-color: #0aafe6;
   position: sticky;
-  border-radius: 0 0 25px 25px;
   bottom: 0;
-  padding: 1.2rem 0 1.4rem;
 }
 #mainArea #chatArea #chatSubmitForm #chatSubmitFormItem {
   width: fit-content;
