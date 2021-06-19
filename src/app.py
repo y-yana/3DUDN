@@ -52,7 +52,7 @@ def show():
     return_json = {
         "message": res,
         "NP":NP,
-        "ALL_NP",session['negaposi']
+        "ALL_NP":session['negaposi']
         
     }
 
