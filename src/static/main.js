@@ -56,7 +56,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.ts */ \"./src/entry/index.ts\");\n/* harmony import */ var _js_background_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/background.js */ \"./src/entry/js/background.js\");\n/* harmony import */ var _js_background_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_background_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _js_speechRecognition_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../js/speechRecognition.js */ \"./src/entry/js/speechRecognition.js\");\n/* harmony import */ var _js_speechRecognition_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_speechRecognition_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _style_index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../style/index.scss */ \"./src/entry/style/index.scss\");\n// TypeScript\r\n\r\n// JavaScript\r\n\r\n\r\n// Sass\r\n\r\n\n\n//# sourceURL=webpack:///./src/entry/style/index.scss?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.ts */ \"./src/entry/index.ts\");\n/* harmony import */ var _js_opening_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/opening.js */ \"./src/entry/js/opening.js\");\n/* harmony import */ var _js_opening_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_opening_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _js_background_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../js/background.js */ \"./src/entry/js/background.js\");\n/* harmony import */ var _js_background_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_background_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _js_speechRecognition_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../js/speechRecognition.js */ \"./src/entry/js/speechRecognition.js\");\n/* harmony import */ var _js_speechRecognition_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_js_speechRecognition_js__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _style_index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../style/index.scss */ \"./src/entry/style/index.scss\");\n// TypeScript\n\n// JavaScript\n\n\n\n// Sass\n\n\n\n//# sourceURL=webpack:///./src/entry/style/index.scss?");
 
 /***/ }),
 
@@ -86,7 +86,17 @@ eval("\r\nbubbly({\r\n    colorStart: '#6edbff',\r\n    colorStop: '#6edbff',\r\
   \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.ts */ \"./src/entry/index.ts\");\n/* harmony import */ var _js_background_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/background.js */ \"./src/entry/js/background.js\");\n/* harmony import */ var _js_background_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_background_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _js_speechRecognition_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../js/speechRecognition.js */ \"./src/entry/js/speechRecognition.js\");\n/* harmony import */ var _js_speechRecognition_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_speechRecognition_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _style_index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../style/index.scss */ \"./src/entry/style/index.scss\");\n// TypeScript\r\n\r\n// JavaScript\r\n\r\n\r\n// Sass\r\n\r\n\n\n//# sourceURL=webpack:///./src/entry/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../index.ts */ \"./src/entry/index.ts\");\n/* harmony import */ var _js_opening_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/opening.js */ \"./src/entry/js/opening.js\");\n/* harmony import */ var _js_opening_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_opening_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _js_background_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../js/background.js */ \"./src/entry/js/background.js\");\n/* harmony import */ var _js_background_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_background_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _js_speechRecognition_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../js/speechRecognition.js */ \"./src/entry/js/speechRecognition.js\");\n/* harmony import */ var _js_speechRecognition_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_js_speechRecognition_js__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _style_index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../style/index.scss */ \"./src/entry/style/index.scss\");\n// TypeScript\n\n// JavaScript\n\n\n\n// Sass\n\n\n\n//# sourceURL=webpack:///./src/entry/js/index.js?");
+
+/***/ }),
+
+/***/ "./src/entry/js/opening.js":
+/*!*********************************!*\
+  !*** ./src/entry/js/opening.js ***!
+  \*********************************/
+/***/ (() => {
+
+eval("\nwindow.onload = function () {\n    var openingElement = document.getElementById('openingContents');\n    $(openingElement).addClass('is-fadein');\n    setTimeout(fadeout, 2000);\n};\nfunction fadeout() {\n    $('#opening').fadeOut('slow');\n}\n\n\n//# sourceURL=webpack:///./src/entry/js/opening.js?");
 
 /***/ }),
 
@@ -104,7 +114,7 @@ eval("\r\nwindow.SpeechRecognition = window.SpeechRecognition || webkitSpeechRec
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -118,14 +128,14 @@ eval("\r\nwindow.SpeechRecognition = window.SpeechRecognition || webkitSpeechRec
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -138,7 +148,7 @@ eval("\r\nwindow.SpeechRecognition = window.SpeechRecognition || webkitSpeechRec
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -150,12 +160,12 @@ eval("\r\nwindow.SpeechRecognition = window.SpeechRecognition || webkitSpeechRec
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -166,13 +176,13 @@ eval("\r\nwindow.SpeechRecognition = window.SpeechRecognition || webkitSpeechRec
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/entry/js/index.js");
-/******/ 	
+/******/
 /******/ })()
 ;
