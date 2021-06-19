@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
   modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';
 
   // 初期値
-  var modelPass = './static/models/base.vrm';
+  var modelPass = './static/base_model/base.vrm';
   var posepass = '../static/pose/hellovrm.csv'
 
   $(document).on('click', '#modelChange', function () {
