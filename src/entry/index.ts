@@ -168,6 +168,11 @@ window.addEventListener("DOMContentLoaded", () => {
       track.name = track.name.replace(/^\.bones\[([^\]]+)\].(position|quaternion|scale)$/, '$1.$2')
     })
 
+    //vrm.lookAt.autoUpdate = vrm._lookAtCamera = true
+    //vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Blink,vrm._manualBlinkVal,)
+
+    vrm.lookAtCamera = true
+
     if (facemode == "fun") {
       vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Fun, 0.5)
       vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.I, 0.11)

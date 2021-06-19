@@ -7,7 +7,6 @@ ARG project_dir=/projects/
 ADD ./src /opt/src/
 WORKDIR /opt/src
 
-
 # install heroku cli
 RUN curl https://cli-assets.heroku.com/install.sh | sh
 
