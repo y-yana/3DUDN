@@ -33,6 +33,7 @@
         <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
     </form>
 </div>
+<button id="modelChange" style="display: none;"></button>
 
 <!-- 名前変更フォーム -->
 <div id="renameArea">
@@ -133,14 +134,20 @@
             processData: false,
             contentType: false,
             timeout: 10000
-        }).done(function () {
+        }).done(function (data) {
             // form要素の削除
             var parent = document.getElementById('modelChangeArea');
             var child = document.getElementById('uploadForm');
             parent.removeChild(child);
 
             //PATHの受取
-            const message = JSON.parse(data.values).path
+            var path = JSON.parse(data.values).path
+
+            var modelChangeBtn = document.getElementById("modelChange")
+
+            modelChangeBtn.value = path;
+
+            modelChangeBtn.click();
 
             // loading要素の削除
             $('#loading').fadeOut('normal');

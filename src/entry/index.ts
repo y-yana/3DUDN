@@ -22,8 +22,11 @@ window.addEventListener("DOMContentLoaded", () => {
   var modelPass = './static/models/base.vrm';
   var posepass = '../static/pose/anim.csv'
 
-  $(document).on('click', '#uploadBtn', function () {
-    modelPass = './static/models/upload.vrm';
+  $(document).on('click', '#modelChange', function () {
+    // pathの受け取り
+    var path = <HTMLInputElement>document.getElementById("modelChange");
+
+    modelPass = path.value;
     posepass = '../static/pose/anim2.csv'
 
     // 現在のモデルを削除
