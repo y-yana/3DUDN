@@ -97,6 +97,7 @@
         }).fail(function (data) { // 失敗した場合実行される
             console.log("Ajax通信 失敗");
 
+            // エラーメッセージの表示
             var errorMsg = '<span class="material-icons">error</span >送信エラーが発生しました';
             $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + errorMsg + "</div></div>");
         });
@@ -142,6 +143,13 @@
 
         }).fail(function () {
             console.log('fail');
+
+            // loading要素の削除
+            $('#loading').fadeOut('normal');
+
+            // エラーメッセージの表示
+            var errorMsg = '<span class="material-icons">error</span >アップロードに失敗しました';
+            $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + errorMsg + "</div></div>");
         });
 
     };
