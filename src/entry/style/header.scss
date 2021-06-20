@@ -1,5 +1,6 @@
 #header{
   width: 100vw;
+  height: 6rem;
   display: flex;
   justify-content: space-between;
   background-color: $BG-header;
@@ -7,6 +8,61 @@
   padding: 1.2rem 3rem 1rem;
   img{
     width: 30%;
+  }
+  #renameArea{
+    #renameForm{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 0.5rem;
+      #renameInputFlex{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        input{
+          background-color: #ffffff;
+          width: 11rem;
+          padding: 0.3rem 0.8rem;
+          border-radius: 25px;
+          border: 2px solid $logo-main-color;
+        }
+      }
+      #rename{
+        width: fit-content;
+        height: fit-content;
+        color: $logo-main-color;
+      }
+    }
+  }
+  #modelChangeArea{
+    #uploadForm{
+      display: flex;
+      gap: 0.5rem;
+      label{
+        background-color: #ffffff;
+        width: 11rem;
+        padding: 0.3rem 0.8rem;
+        border-radius: 25px;
+        border: 2px solid $logo-main-color;
+        #spansFlex{
+          display: flex;
+          align-items: center;
+          span{
+            width: fit-content;
+            height: fit-content;
+          }
+          .material-icons{
+            color: $logo-main-color;
+          }
+        }
+        input{
+          display: none;
+        }
+      }
+      #uploadBtn{
+        color: $logo-main-color;
+      }
+    }
   }
   #setting{
     width: fit-content;

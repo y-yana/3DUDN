@@ -16,23 +16,31 @@
 <div id="header">
     <!-- ロゴ画像 -->
     <img src="../static/images/logo.png">
-    <!-- 設定ボタン -->
-    <button id="setting"><span class="material-icons">settings</span></button>
     <!-- 名前変更フォーム -->
     <div id="renameArea" style="display: none;">
         <form id="renameForm" action="/rename" method="post" onsubmit="return false;">
+            <div id='renameInputFlex'>
             <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
             <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
+            </div>
             <button id="rename" onclick="changeUserName()"><span class="material-icons">drive_file_rename_outline</span></button>
         </form>
     </div>
     <!-- モデル変更フォーム -->
     <div id="modelChangeArea" style="display: none;">
         <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
-            <input id="upFile" type="file" name="the_file">
+            <label for="upFile">
+                <div id="spansFlex">
+                    <span class="material-icons">description</span>
+                    <span>ファイルを選択</span>
+                </div>
+                <input id="upFile" type="file" name="the_file">
+            </label>
             <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
         </form>
     </div>
+    <!-- 設定ボタン -->
+    <button id="setting"><span class="material-icons">settings</span></button>
     <!-- 変数送信用(display:none) -->
     <button id="modelChange" style="display: none;"></button>
 </div>
@@ -49,10 +57,12 @@
         <!-- チャット送信 -->
         <form id="chatSubmitForm" name="example_form" onsubmit="return false;">
             <div id="chatSubmitFormItem">
-            <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Ctrl+Enter で送信">
-            <button id="recStart_" class="recordBtn"><span class="material-icons">mic</span></button>
-            <button id="recStop_" class="recordBtn" style="display:none"><span class="material-icons">mic_off</span></button>
-            <button id="chatSubmitBtn" onclick="changeHandler(document.getElementById('chatMessage'))"><span class="material-icons">send</span></button>
+                <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Ctrl+Enter で送信">
+                <button id="recStart_" class="recordBtn"><span class="material-icons">mic</span></button>
+                <button id="recStop_" class="recordBtn" style="display:none"><span
+                        class="material-icons">mic_off</span></button>
+                <button id="chatSubmitBtn" onclick="changeHandler(document.getElementById('chatMessage'))"><span
+                        class="material-icons">send</span></button>
             </div>
         </form>
     </div>
@@ -61,12 +71,13 @@
 <script type="text/javascript" id="NPscript">var NP = 0;</script>
 <script type="text/javascript" id="ALL_NPscript">ALL_NP = 0;</script>
 <script type="text/javascript" id="facecheckbool">check = '0';</script>
+<script type="text/javascript" id="base_message">check = '0';</script>
 
 <script src="static/main.js"></script>
 <script>
     // グローバル関数を定義
     var path = 'path!!'
-    
+
     // チャット機能
     function changeHandler(input_value) {
         const chatMessage = $(input_value).serialize();
@@ -112,11 +123,13 @@
 
             // POSTリクエストの結果を受け取ってHTMLを書き換える
             const message = JSON.parse(data.values).message
-
+            if (message.includes('こんにちは') || message.includes('こんばんは') || message.includes('おはよう')) {
+                document.getElementById('base_message').value = '1';
+            }
             //ネガポジの受取
             const NP = JSON.parse(data.values).NP
             document.getElementById('NPscript').value = NP;
-            const ALL_NP = JSON.parse(data.values).ALL_NP
+            const ALL_NP = JSON.parse(data.values).ALL_NP;
             document.getElementById('ALL_NPscript').value = ALL_NP;
 
             // 受信メッセージの表示
@@ -130,7 +143,6 @@
             speechSynthesis.speak(text);
 
             if (NP > 0 || NP < 0) {
-                console.log("flagon")
                 document.getElementById('facecheckbool').value = '1';
             }
 
