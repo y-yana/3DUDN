@@ -2,11 +2,7 @@ FROM python:3.6
 
 ARG project_dir=/projects/
 
-#ADD ./src/requirements.txt $project_dir
-#WORKDIR $project_dir
-ADD ./src /opt/src/
-WORKDIR /opt/src
-
+ADD src/requirements.txt $project_dir
 
 # install heroku cli
 RUN curl https://cli-assets.heroku.com/install.sh | sh

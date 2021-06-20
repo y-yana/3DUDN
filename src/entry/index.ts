@@ -34,8 +34,11 @@ window.addEventListener("DOMContentLoaded", () => {
   modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';
 
   // 初期値
-  var modelPass = './static/models/base.vrm';
-  var posepass = '../static/pose/hellovrm.csv'
+  var modelPass = '../static/base_model/base.vrm';
+  var posepass = '../static/pose/hellovrm.csv';
+  var facemode = "normal";
+  var NP
+  var ALL_NP
 
   $(document).on('click', '#modelChange', function () {
     // pathの受け取り
@@ -170,6 +173,23 @@ window.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < bones.length; i++) {
       boneNode[i] = vrm.humanoid.getBoneNode(bones[i])
     }
+    
+    NP = <HTMLInputElement>document.getElementById('NPscript');
+    ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
+    if (Number(NP.value) > 0) {
+      facemode = "fun"
+      console.log("嬉しいよ")
+    }
+    if (Number(NP.value) < 0) {
+      facemode = "sad"
+      console.log("悲しいな")
+    }
+    if (Number(NP.value) > 0) {
+      posepass = '../static/pose/anim3.csv'
+    }
+    if (Number(NP.value) < 0) {
+      posepass = '../static/pose/anim2.csv'
+    }
 
     // AnimationClipの生成
     const clip = THREE.AnimationClip.parseAnimation({
@@ -181,9 +201,16 @@ window.addEventListener("DOMContentLoaded", () => {
       track.name = track.name.replace(/^\.bones\[([^\]]+)\].(position|quaternion|scale)$/, '$1.$2')
     })
 
-    vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Fun, 0.5)
-    vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.I, 0.11)
-    vrm.blendShapeProxy.update()
+    if (facemode == "fun") {
+      vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Fun, 0.5)
+      vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.I, 0.11)
+      vrm.blendShapeProxy.update()
+    }
+    if (facemode == "sad") {
+      vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Angry, 0.22)
+      vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Sorrow, 0.43)
+      vrm.blendShapeProxy.update()
+    }
 
     // AnimationMixerの生成と再生
     mixer = new THREE.AnimationMixer(vrm.scene)
@@ -197,6 +224,14 @@ window.addEventListener("DOMContentLoaded", () => {
   // フレーム毎に呼ばれる
   const update = () => {
     requestAnimationFrame(update)
+
+    var facecheck = <HTMLInputElement>document.getElementById('facecheckbool');
+    if (facecheck.value == '1') {
+      scene.remove.apply(scene, scene.children);
+      sceneOption()
+      newLoad();
+      (<HTMLInputElement>document.getElementById('facecheckbool')).value = '0';
+    }
 
     // 時間計測
     let time = (new Date()).getTime()
