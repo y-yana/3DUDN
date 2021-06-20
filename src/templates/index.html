@@ -53,6 +53,7 @@
 
 <script type="text/javascript" id="NPscript">var NP = 0;</script>
 <script type="text/javascript" id="ALL_NPscript">ALL_NP = 0;</script>
+<script type="text/javascript" id="facecheckbool">check = '0';</script>
 
 <script src="static/main.js"></script>
 <script>
@@ -118,6 +119,10 @@
             // 受信メッセージの読み上げ
             const text = new SpeechSynthesisUtterance(message);
             speechSynthesis.speak(text);
+
+            if (NP != 0) {
+                document.getElementById('facecheckbool').value = '1';
+            }
 
         }).fail(function (data) { // 失敗した場合実行される
             console.log("Ajax通信 失敗");

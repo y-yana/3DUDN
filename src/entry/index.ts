@@ -170,6 +170,19 @@ window.addEventListener("DOMContentLoaded", () => {
       track.name = track.name.replace(/^\.bones\[([^\]]+)\].(position|quaternion|scale)$/, '$1.$2')
     })
 
+    NP = <HTMLInputElement>document.getElementById('NPscript');
+    ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
+    if (Number(NP.value) > 0) {
+      facemode = "fun"
+      console.log("嬉しいよ")
+    }
+    if (Number(NP.value) < 0) {
+      facemode = "sad"
+      console.log("悲しいな")
+    }
+    if (Number(NP.value) > 0) {
+      posepass = '../static/pose/anim3.csv'
+    }
     if (facemode == "fun") {
       vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Fun, 0.5)
       vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.I, 0.11)
@@ -194,21 +207,13 @@ window.addEventListener("DOMContentLoaded", () => {
   const update = () => {
     requestAnimationFrame(update)
 
-    NP = <HTMLInputElement>document.getElementById('NPscript');
-    ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
-    if (Number(NP.value) > 0) {
-      facemode = "fun"
-      console.log("嬉しいよ")
-      //newLoad()
-    }
-    if (Number(NP.value) < 0) {
-      facemode = "sad"
-      console.log("悲しいな")
-      //newLoad()
-    }
-    if (Number(NP.value) > 0) {
-      posepass = '../static/pose/anim3.csv'
-      //newLoad()
+    var facecheck = <HTMLInputElement>document.getElementById('facecheckbool');
+    if (facecheck.value == '1') {
+      scene.remove.apply(scene, scene.children);
+      sceneOption()
+      newLoad();
+      (<HTMLInputElement>document.getElementById('facecheckbool')).value = '0';
+      console.log("テスト")
     }
 
     // 時間計測
