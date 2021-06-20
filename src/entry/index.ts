@@ -31,7 +31,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     modelPass = path.value;
     posepass = '../static/pose/anim2.csv'
-    facemode = "sad";//試し用悲しみ
 
     // 現在のモデルを削除
     scene.remove.apply(scene, scene.children);
@@ -159,17 +158,7 @@ window.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < bones.length; i++) {
       boneNode[i] = vrm.humanoid.getBoneNode(bones[i])
     }
-
-    // AnimationClipの生成
-    const clip = THREE.AnimationClip.parseAnimation({
-      hierarchy: csv2hierarchy(http2str(posepass), 200)
-    }, boneNode)
-
-    // トラック名の変更
-    clip.tracks.some((track) => {
-      track.name = track.name.replace(/^\.bones\[([^\]]+)\].(position|quaternion|scale)$/, '$1.$2')
-    })
-
+    
     NP = <HTMLInputElement>document.getElementById('NPscript');
     ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
     if (Number(NP.value) > 0) {
@@ -186,6 +175,17 @@ window.addEventListener("DOMContentLoaded", () => {
     if (Number(NP.value) < 0) {
       posepass = '../static/pose/anim2.csv'
     }
+
+    // AnimationClipの生成
+    const clip = THREE.AnimationClip.parseAnimation({
+      hierarchy: csv2hierarchy(http2str(posepass), 200)
+    }, boneNode)
+
+    // トラック名の変更
+    clip.tracks.some((track) => {
+      track.name = track.name.replace(/^\.bones\[([^\]]+)\].(position|quaternion|scale)$/, '$1.$2')
+    })
+
     if (facemode == "fun") {
       vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Fun, 0.5)
       vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.I, 0.11)
@@ -216,7 +216,6 @@ window.addEventListener("DOMContentLoaded", () => {
       sceneOption()
       newLoad();
       (<HTMLInputElement>document.getElementById('facecheckbool')).value = '0';
-      console.log("テスト")
     }
 
     // 時間計測
