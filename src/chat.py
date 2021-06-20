@@ -10,18 +10,18 @@ def response(word,u_name,b_name,in_np):
 
     if in_np>=2 and word in suki:
         return f'わたしも{u_name}のこと好きだよ'
-    if in_np>=2 and word == 'かわいい'
+    if in_np>=2 and word == 'かわいい':
         return 'えへへ...うれしいな'
 
-    
+
 
 
 
     if in_np<-2:
         return f'{u_name}のばか...'
 
-        
-        
+
+
     # リクエストに必要なパラメーター
     headers = {'content-type':'text/json'}
     payload = {'utterance':word,
