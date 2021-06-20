@@ -5,10 +5,11 @@ document.getElementById('setting').onclick = function () {
   var renameStyle = renameForm.style.display;
   var modelUpStyle = modelUpForm.style.display;
 
-  console.log(renameForm)
-  console.log(renameStyle)
   if (renameStyle == 'none' || modelUpStyle == 'none') {
     renameForm.style.display = 'block';
     modelUpForm.style.display = 'block';
+  } else {
+    renameForm.style.display = 'none';
+    modelUpForm.style.display = 'none';
   }
 }
