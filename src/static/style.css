@@ -526,6 +526,7 @@ template {
 /* mobileここまで */
 #header {
   width: 100vw;
+  height: 6rem;
   display: flex;
   justify-content: space-between;
   background-color: #f4fbff;
@@ -556,6 +557,34 @@ template {
 #header #renameArea #renameForm #rename {
   width: fit-content;
   height: fit-content;
+  color: #013E6A;
+}
+#header #modelChangeArea #uploadForm {
+  display: flex;
+  gap: 0.5rem;
+}
+#header #modelChangeArea #uploadForm label {
+  background-color: #ffffff;
+  width: 11rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 25px;
+  border: 2px solid #013E6A;
+}
+#header #modelChangeArea #uploadForm label #spansFlex {
+  display: flex;
+  align-items: center;
+}
+#header #modelChangeArea #uploadForm label #spansFlex span {
+  width: fit-content;
+  height: fit-content;
+}
+#header #modelChangeArea #uploadForm label #spansFlex .material-icons {
+  color: #013E6A;
+}
+#header #modelChangeArea #uploadForm label input {
+  display: none;
+}
+#header #modelChangeArea #uploadForm #uploadBtn {
   color: #013E6A;
 }
 #header #setting {
