@@ -19,9 +19,11 @@ window.addEventListener("DOMContentLoaded", () => {
   modelArea!.innerHTML = '<canvas id="canvas" width="' + newWidth + 'px" height="' + newHeight + 'px"></canvas>';
 
   // 初期値
-  var modelPass ='../static/base_model/base.vrm';
+  var modelPass = '../static/base_model/base.vrm';
   var posepass = '../static/pose/hellovrm.csv';
   var facemode = "fun";
+  var NP
+  var ALL_NP
 
   $(document).on('click', '#modelChange', function () {
     // pathの受け取り
@@ -168,11 +170,19 @@ window.addEventListener("DOMContentLoaded", () => {
       track.name = track.name.replace(/^\.bones\[([^\]]+)\].(position|quaternion|scale)$/, '$1.$2')
     })
 
-    //vrm.lookAt.autoUpdate = vrm._lookAtCamera = true
-    //vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Blink,vrm._manualBlinkVal,)
-
-    vrm.lookAtCamera = true
-
+    NP = <HTMLInputElement>document.getElementById('NPscript');
+    ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
+    if (Number(NP.value) > 0) {
+      facemode = "fun"
+      console.log("嬉しいよ")
+    }
+    if (Number(NP.value) < 0) {
+      facemode = "sad"
+      console.log("悲しいな")
+    }
+    if (Number(NP.value) > 0) {
+      posepass = '../static/pose/anim3.csv'
+    }
     if (facemode == "fun") {
       vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Fun, 0.5)
       vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.I, 0.11)
@@ -196,6 +206,15 @@ window.addEventListener("DOMContentLoaded", () => {
   // フレーム毎に呼ばれる
   const update = () => {
     requestAnimationFrame(update)
+
+    var facecheck = <HTMLInputElement>document.getElementById('facecheckbool');
+    if (facecheck.value == '1') {
+      scene.remove.apply(scene, scene.children);
+      sceneOption()
+      newLoad();
+      (<HTMLInputElement>document.getElementById('facecheckbool')).value = '0';
+      console.log("テスト")
+    }
 
     // 時間計測
     let time = (new Date()).getTime()

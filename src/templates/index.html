@@ -23,14 +23,16 @@
     <input type="text" id="chatMessage" name="chatMessage" value="" placeholder="Ctrl+Enter で送信">
     <button id="recStart_" class="recordBtn"><span class="material-icons">mic</span></button>
     <button id="recStop_" class="recordBtn" style="display:none"><span class="material-icons">mic_off</span></button>
-    <button id="chatSubmitBtn" onclick="changeHandler(document.getElementById('chatMessage'))"><span class="material-icons">send</span></button>
+    <button id="chatSubmitBtn" onclick="changeHandler(document.getElementById('chatMessage'))"><span
+            class="material-icons">send</span></button>
 </form>
 
 <!-- モデル変更フォーム -->
 <div id="modelChangeArea">
     <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data" onsubmit="return false;">
         <input id="upFile" type="file" name="the_file">
-        <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
+        <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span
+                class="material-icons">upload</span></button>
     </form>
 </div>
 <button id="modelChange" style="display: none;"></button>
@@ -40,7 +42,8 @@
     <form id="renameForm" action="/rename" method="post" onsubmit="return false;">
         <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
         <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
-        <button id="rename" onclick="changeUserName()"><span class="material-icons">drive_file_rename_outline</span></button>
+        <button id="rename" onclick="changeUserName()"><span
+                class="material-icons">drive_file_rename_outline</span></button>
     </form>
 </div>
 
@@ -48,10 +51,20 @@
 <div id="modelArea">
 </div>
 
+<script type="text/javascript" id="NPscript">var NP = 0;</script>
+<script type="text/javascript" id="ALL_NPscript">ALL_NP = 0;</script>
+<script type="text/javascript" id="facecheckbool">check = '0';</script>
+
 <script src="static/main.js"></script>
 <script>
     // グローバル関数を定義
     var path = 'path!!'
+    /*var NPscript = document.createElement('script');
+    document.head.appendChild(NPscript);
+    var ALLNPscript = document.createElement('script');
+    document.head.appendChild(ALLNPscript);
+    document.getElementById('NPscript').value = 0;
+    document.getElementById('ALL_NPscript').value = 0;*/
 
     // チャット機能
     function changeHandler(input_value) {
@@ -63,7 +76,7 @@
         var Min = sendTime.getMinutes();
 
         // 空白でsubmitした時の処理
-        if(input_value.value == ''){
+        if (input_value.value == '') {
             var null_message = 'ちょっとよく聞こえなかったから、もう一回言ってほしいな〜'
 
             // 返事の表示
@@ -92,12 +105,24 @@
             // POSTリクエストの結果を受け取ってHTMLを書き換える
             const message = JSON.parse(data.values).message
 
+            //ネガポジの受取
+            const NP = JSON.parse(data.values).NP
+            document.getElementById('NPscript').value = NP;
+            const ALL_NP = JSON.parse(data.values).ALL_NP
+            document.getElementById('ALL_NPscript').value = ALL_NP;
+            console.log("NP=" + NP)
+            console.log("ALL_NP=" + ALL_NP)
+
             // 受信メッセージの表示
             $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + message + "</div><span id = 'sendTime' >" + Hour + ": " + Min + "</span ></div>");
 
             // 受信メッセージの読み上げ
             const text = new SpeechSynthesisUtterance(message);
             speechSynthesis.speak(text);
+
+            if (NP != 0) {
+                document.getElementById('facecheckbool').value = '1';
+            }
 
         }).fail(function (data) { // 失敗した場合実行される
             console.log("Ajax通信 失敗");
@@ -171,18 +196,18 @@
 
     // 名前変更機能
     function changeUserName() {
-    const newName = $('#renameForm').serialize();
+        const newName = $('#renameForm').serialize();
 
-    $.ajax("/rename", {
-        type: "post",
-        data: newName,  // POSTでサーバーに送信するデータ
-        dataType: "json",
-    });
+        $.ajax("/rename", {
+            type: "post",
+            data: newName,  // POSTでサーバーに送信するデータ
+            dataType: "json",
+        });
 
-    // form要素の削除
-    var parent = document.getElementById('renameArea');
-    var child = document.getElementById('renameForm');
-    parent.removeChild(child);
+        // form要素の削除
+        var parent = document.getElementById('renameArea');
+        var child = document.getElementById('renameForm');
+        parent.removeChild(child);
     }
 </script>
 

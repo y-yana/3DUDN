@@ -4,6 +4,7 @@ from chat import response
 import os
 import datetime
 import random, string
+from negaposi.negaposi import negaposi
 app = Flask(__name__)
 
 app.secret_key = 'secret'
@@ -15,6 +16,7 @@ def index():
 
     session['user_name'] = 'master'
     session['bot_name'] = 'bot'
+    session['negaposi']=0
     return render_template("index.html")
 
 
@@ -35,10 +37,22 @@ def rename():
 def show():
     u_name=session['user_name']
     b_name=session['bot_name']
-    res = response(request.form['chatMessage'],u_name,b_name)
+    np=session['negaposi']
+    print('np:',np)
+    res = response(request.form['chatMessage'],u_name,b_name,np)
+
+    npi=negaposi(request.form['chatMessage'])
+    npo=negaposi(res)
+
+    #print(npi)
+    #print(npo)
+    NP=npi+npo
+    session['negaposi']+=NP
 
     return_json = {
-        "message": res
+        "message": res,
+        "NP":NP,
+        "ALL_NP":session['negaposi']
     }
 
     return jsonify(values=json.dumps(return_json))
