@@ -1,8 +1,24 @@
 #header{
   width: 100vw;
+  display: flex;
+  justify-content: space-between;
   background-color: $BG-header;
+  align-items: center;
+  padding: 1.2rem 3rem 1rem;
   img{
     width: 30%;
-    margin: 0.8rem 0 0.5rem 2.5rem;
+  }
+  #setting{
+    width: fit-content;
+    height: fit-content;
+    color: $logo-main-color;
+    span{
+      font-size: 2.3rem;
+    }
   }
 }
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+}
+/* mobileここまで */

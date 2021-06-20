@@ -526,13 +526,25 @@ template {
 /* mobileここまで */
 #header {
   width: 100vw;
+  display: flex;
+  justify-content: space-between;
   background-color: #f4fbff;
+  align-items: center;
+  padding: 1.2rem 3rem 1rem;
 }
 #header img {
   width: 30%;
-  margin: 0.8rem 0 0.5rem 2.5rem;
+}
+#header #setting {
+  width: fit-content;
+  height: fit-content;
+  color: #013E6A;
+}
+#header #setting span {
+  font-size: 2.3rem;
 }
 
+/* mobileここまで */
 #mainArea {
   width: fit-content;
   height: fit-content;
