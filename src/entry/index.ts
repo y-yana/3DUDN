@@ -19,25 +19,15 @@ window.addEventListener("DOMContentLoaded", () => {
     // 比率計算(mobile)
     newWidth = Math.floor(getWidth * 0.8)
     newHeight = Math.floor(getHeight * 0.8)
-      // #chatAreaの高さを設定
-  var chatArea = document.getElementById('chatArea');
-    chatArea!.style.height = '16rem';
-    var setting = document.getElementById('setting');
-  setting!.style.display = 'none';
   } else {
     // 比率計算(desktop)
     newWidth = Math.floor(getWidth * (2 / 5))
     newHeight = Math.floor(getHeight * (4 / 5))
-      // #chatAreaの高さを設定
-  var chatArea = document.getElementById('chatArea');
-    chatArea!.style.height = newHeight + 'px';
   }
 
-  /*
   // #chatAreaの高さを設定
   var chatArea = document.getElementById('chatArea');
   chatArea!.style.height = newHeight + 'px';
-*/
 
   // canvas生成
   var modelArea = document.getElementById('modelArea');
@@ -84,14 +74,11 @@ window.addEventListener("DOMContentLoaded", () => {
   )
   camera.position.set(0, 1, 4)
 
-    // レスポンシブ対応
-  if (getWidth > 950) {
   // カメラコントーロールの設定
   const controls = new OrbitControls(camera, renderer.domElement)
   controls.target.set(0, 0.85, 0)
   controls.screenSpacePanning = true
   controls.update()
-  }
 
   // シーンの設定
   const scene = new THREE.Scene()
@@ -185,7 +172,7 @@ window.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < bones.length; i++) {
       boneNode[i] = vrm.humanoid.getBoneNode(bones[i])
     }
-    
+
     var NP = <HTMLInputElement>document.getElementById('NPscript');
     var ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
     var message = <HTMLInputElement>document.getElementById('base_message');
@@ -206,7 +193,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     if (message.value == '1') {
       posepass = '../static/pose/ozigi.csv';
-      (<HTMLInputElement>document.getElementById('facecheckbool')).value = '0';
+      (<HTMLInputElement>document.getElementById('base_message')).value = '0';
     }
 
     // AnimationClipの生成
