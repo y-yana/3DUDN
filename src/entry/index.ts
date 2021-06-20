@@ -21,14 +21,16 @@ window.addEventListener("DOMContentLoaded", () => {
     newHeight = Math.floor(getHeight * 0.8)
       // #chatAreaの高さを設定
   var chatArea = document.getElementById('chatArea');
-  chatArea!.style.height = '16rem';
+    chatArea!.style.height = '16rem';
+    var setting = document.getElementById('setting');
+  setting!.style.display = 'none';
   } else {
     // 比率計算(desktop)
     newWidth = Math.floor(getWidth * (2 / 5))
     newHeight = Math.floor(getHeight * (4 / 5))
       // #chatAreaの高さを設定
   var chatArea = document.getElementById('chatArea');
-  chatArea!.style.height = newHeight + 'px';
+    chatArea!.style.height = newHeight + 'px';
   }
 
   /*

@@ -87,6 +87,7 @@
       bottom: 0;
       #chatSubmitFormItem{
         width: fit-content;
+        max-width: fit-content;
         max-width: 18rem;
         display: flex;
         background-color: $BG-chat-input;

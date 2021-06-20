@@ -875,7 +875,7 @@ template {
     gap: 1rem;
   }
   #mainArea #chatArea #chatSubmitForm #chatSubmitFormItem #chatMessage {
-    width: 15rem;
+    width: 11rem;
   }
   #mainArea #chatArea #chatSubmitForm #chatSubmitBtn {
     color: #0059be;
