@@ -2,10 +2,24 @@
 import requests
 import json
 
-def response(word,u_name,b_name,np):
+def response(word,u_name,b_name,in_np):
 
-    if np>=3 and word=='好き':
-        return 'いっぱいちゅき'
+    suki=['すき','好き']
+    kirai=['きらい','嫌い','バカ','馬鹿','ばか']
+
+
+    if in_np>=2 and word in suki:
+        return f'わたしも{u_name}のこと好きだよ'
+    if in_np>=2 and word == 'かわいい'
+        return 'えへへ...うれしいな'
+
+    
+
+
+
+    if in_np<-2:
+        return f'{u_name}のばか...'
+
         
         
     # リクエストに必要なパラメーター

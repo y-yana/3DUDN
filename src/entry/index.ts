@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { VRM, VRMSchema } from '@pixiv/three-vrm'
-import { updateArrayBindingPattern } from 'typescript';
+import { getConstantValue, updateArrayBindingPattern } from 'typescript';
 
 window.addEventListener("DOMContentLoaded", () => {
   // canvasサイズの制御
@@ -35,6 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 初期値
   var modelPass = '../static/base_model/base.vrm';
+  //var posepass = '../static/pose/suneru.csv';
   var posepass = '../static/pose/hellovrm.csv';
   var facemode = "normal";
   var NP
@@ -74,7 +75,7 @@ window.addEventListener("DOMContentLoaded", () => {
     1000,
   )
   camera.position.set(0, 1, 4)
-
+ 
   // カメラコントーロールの設定
   const controls = new OrbitControls(camera, renderer.domElement)
   controls.target.set(0, 0.85, 0)
@@ -176,19 +177,22 @@ window.addEventListener("DOMContentLoaded", () => {
     
     NP = <HTMLInputElement>document.getElementById('NPscript');
     ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
-    if (Number(NP.value) > 0) {
+    if (Number(NP.value) > 0 && Number(ALL_NP.value) <= 1) {
       facemode = "fun"
       console.log("嬉しいよ")
     }
-    if (Number(NP.value) < 0) {
+    if (Number(NP.value) < 0 && Number(ALL_NP.value) >= -1) {
       facemode = "sad"
       console.log("悲しいな")
     }
-    if (Number(NP.value) > 0) {
+    if (Number(ALL_NP.value) > 0) {
       posepass = '../static/pose/cats.csv'
     }
-    if (Number(NP.value) < 0) {
+    if (Number(ALL_NP.value) < 0) {
       posepass = '../static/pose/hands.csv'
+    }
+    if (Number(ALL_NP.value) <= -3) {
+      posepass = '../static/pose/suneru.csv'
     }
 
     // AnimationClipの生成
