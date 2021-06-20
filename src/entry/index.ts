@@ -19,15 +19,23 @@ window.addEventListener("DOMContentLoaded", () => {
     // 比率計算(mobile)
     newWidth = Math.floor(getWidth * 0.8)
     newHeight = Math.floor(getHeight * 0.8)
+      // #chatAreaの高さを設定
+  var chatArea = document.getElementById('chatArea');
+  chatArea!.style.height = '16rem';
   } else {
     // 比率計算(desktop)
     newWidth = Math.floor(getWidth * (2 / 5))
     newHeight = Math.floor(getHeight * (4 / 5))
+      // #chatAreaの高さを設定
+  var chatArea = document.getElementById('chatArea');
+  chatArea!.style.height = newHeight + 'px';
   }
 
+  /*
   // #chatAreaの高さを設定
   var chatArea = document.getElementById('chatArea');
   chatArea!.style.height = newHeight + 'px';
+*/
 
   // canvas生成
   var modelArea = document.getElementById('modelArea');
