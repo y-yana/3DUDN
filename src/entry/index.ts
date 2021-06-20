@@ -185,10 +185,10 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log("悲しいな")
     }
     if (Number(NP.value) > 0) {
-      posepass = '../static/pose/anim3.csv'
+      posepass = '../static/pose/cats.csv'
     }
     if (Number(NP.value) < 0) {
-      posepass = '../static/pose/anim2.csv'
+      posepass = '../static/pose/hands.csv'
     }
 
     // AnimationClipの生成
