@@ -30,8 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
     var path = <HTMLInputElement>document.getElementById("modelChange");
 
     modelPass = path.value;
-    posepass = '../static/pose/anim2.csv'
-    facemode = "sad";//試し用悲しみ
+    posepass = '../static/pose/hands.csv'
 
     // 現在のモデルを削除
     scene.remove.apply(scene, scene.children);
@@ -181,7 +180,7 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log("悲しいな")
     }
     if (Number(NP.value) > 0) {
-      posepass = '../static/pose/anim3.csv'
+      posepass = '../static/pose/cats.csv'
     }
     if (facemode == "fun") {
       vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Fun, 0.5)
@@ -202,9 +201,37 @@ window.addEventListener("DOMContentLoaded", () => {
     action.play()
   }
   let lastTime = (new Date()).getTime()
-
+/*
   // フレーム毎に呼ばれる
   const update = () => {
+    requestAnimationFrame(update)
+
+    var facecheck = <HTMLInputElement>document.getElementById('facecheckbool');
+    if (facecheck.value == '1') {
+      scene.remove.apply(scene, scene.children);
+      sceneOption()
+      newLoad();
+      (<HTMLInputElement>document.getElementById('facecheckbool')).value = '0';
+      console.log("テスト")
+    }
+
+    // 時間計測
+    let time = (new Date()).getTime()
+    let delta = time - lastTime;
+
+    // アニメーションの定期処理
+    if (mixer) {
+      mixer.update(delta)
+    }
+
+    // 最終更新時間
+    lastTime = time;
+
+    // レンダリング
+    renderer.render(scene, camera)
+  }*/
+   // フレーム毎に呼ばれる
+   const update = (vrm) => {
     requestAnimationFrame(update)
 
     var facecheck = <HTMLInputElement>document.getElementById('facecheckbool');
