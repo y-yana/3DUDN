@@ -526,6 +526,7 @@ template {
 /* mobileここまで */
 #header {
   width: 100vw;
+  height: 6rem;
   display: flex;
   justify-content: space-between;
   background-color: #f4fbff;
