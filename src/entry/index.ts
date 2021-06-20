@@ -73,7 +73,7 @@ window.addEventListener("DOMContentLoaded", () => {
     1000,
   )
   camera.position.set(0, 1, 4)
- 
+
   // カメラコントーロールの設定
   const controls = new OrbitControls(camera, renderer.domElement)
   controls.target.set(0, 0.85, 0)
@@ -172,7 +172,7 @@ window.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < bones.length; i++) {
       boneNode[i] = vrm.humanoid.getBoneNode(bones[i])
     }
-    
+
     var NP = <HTMLInputElement>document.getElementById('NPscript');
     var ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
     var message = <HTMLInputElement>document.getElementById('base_message');
@@ -193,7 +193,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     if (message.value == '1') {
       posepass = '../static/pose/ozigi.csv';
-      (<HTMLInputElement>document.getElementById('facecheckbool')).value = '0';
+      (<HTMLInputElement>document.getElementById('base_message')).value = '0';
     }
 
     // AnimationClipの生成
