@@ -14,8 +14,8 @@ app.secret_key = 'secret'
 def index():
     #return "Hello World"
 
-    session['user_name'] = 'master'
-    session['bot_name'] = 'bot'
+    session['user_name'] = 'マスター'
+    session['bot_name'] = 'U Roid Chat'
     session['negaposi']=0
     return render_template("index.html")
 
@@ -37,17 +37,23 @@ def rename():
 def show():
     u_name=session['user_name']
     b_name=session['bot_name']
-    np=session['negaposi']
-    print('np:',np)
-    res = response(request.form['chatMessage'],u_name,b_name,np)
+    
+    
 
     npi=negaposi(request.form['chatMessage'])
-    npo=negaposi(res)
+    session['negaposi']+=npi
 
+    print('in_nage',session['negaposi'])
+    
+
+    res = response(request.form['chatMessage'],u_name,b_name,session['negaposi'])
+
+    npo=negaposi(res)
+    
     #print(npi)
     #print(npo)
     NP=npi+npo
-    session['negaposi']+=NP
+    
 
     return_json = {
         "message": res,
