@@ -1,8 +1,12 @@
 #word = input("なにか話しかけてみてください：")
 import requests
 import json
+import random
 
-def response(word,u_name,b_name,in_np):
+def response(word,u_name,b_name,in_np,np_ALL,npi):
+    print(in_np)
+    print(np_ALL)
+    print(npi)
 
     suki=['すき','好き']
     kirai=['きらい','嫌い','バカ','馬鹿','ばか']
@@ -10,24 +14,48 @@ def response(word,u_name,b_name,in_np):
 
     if in_np>=2 and word in suki:
         return f'わたしも{u_name}のこと好きだよ'
-    if in_np>=2 and word == 'かわいい':
+    if np_ALL>=3 and word == 'かわいい':
         return 'えへへ...うれしいな'
 
+    if np_ALL>=3 and word in kirai:
+        r=['えっ...','うそだぁー','傷つくなぁ','ぴえん']
+        return random.choice(r)
 
+    if np_ALL<-1 and word in kirai:
+        r=['えーん...','泣いちゃう',1]
+        f=random.choice(r)
+        if f!=1:
+            return f
 
+    if np_ALL<-2 and npi<0:
+        flag=[1,2,3,4]
+        f=random.choice(flag)
+        if f==1:
+            return 'すねちゃうよ？'
+
+    if np_ALL>4 and npi>0:
+        flag=[1,2,3,4]
+        f=random.choice(flag)
+        if f==1:
+            return 'そんなこと言ったって喜ばないんだからね！'
+
+    if word=='うん':
+        return 'うん！'
 
 
     if in_np<-2:
         return f'{u_name}のばか...'
 
+    
 
-
+        
+        
     # リクエストに必要なパラメーター
     headers = {'content-type':'text/json'}
     payload = {'utterance':word,
                 "username":u_name,
                 "agentState":{"agentName":b_name,"tone":"normal", "age":"0歳"},
-                "addition" :{"ngwords":['<','>','(',')']}
+                "addition" :{"ngwords":['きたないなー']}
                 }
 
     print(u_name)
