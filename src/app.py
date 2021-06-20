@@ -17,6 +17,7 @@ def index():
     session['user_name'] = 'マスター'
     session['bot_name'] = 'U Roid Chat'
     session['negaposi']=0
+    session['np_ALL']=0
     return render_template("index.html")
 
 
@@ -37,22 +38,30 @@ def rename():
 def show():
     u_name=session['user_name']
     b_name=session['bot_name']
+
+    np_ALL=session['np_ALL']
     
     
 
     npi=negaposi(request.form['chatMessage'])
     session['negaposi']+=npi
+    if npi==0 and session['negaposi']>0:
+        session['negaposi']-=1
+    if npi==0 and session['negaposi']<0:
+        session['negaposi']+=1
 
-    print('in_nage',session['negaposi'])
+    #print('in_nage',session['negaposi'])
     
 
-    res = response(request.form['chatMessage'],u_name,b_name,session['negaposi'])
+    res = response(request.form['chatMessage'],u_name,b_name,session['negaposi'],np_ALL,npi)
 
     npo=negaposi(res)
     
     #print(npi)
     #print(npo)
     NP=npi+npo
+
+    session['np_ALL']+=NP
     
 
     return_json = {

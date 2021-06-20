@@ -48,8 +48,6 @@ window.addEventListener("DOMContentLoaded", () => {
   //var posepass = '../static/pose/suneru.csv';
   var posepass = '../static/pose/hellovrm.csv';
   var facemode = "normal";
-  var NP
-  var ALL_NP
 
   $(document).on('click', '#modelChange', function () {
     // pathの受け取り
@@ -187,16 +185,15 @@ window.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < bones.length; i++) {
       boneNode[i] = vrm.humanoid.getBoneNode(bones[i])
     }
-
-    NP = <HTMLInputElement>document.getElementById('NPscript');
-    ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
+    
+    var NP = <HTMLInputElement>document.getElementById('NPscript');
+    var ALL_NP = <HTMLInputElement>document.getElementById('ALL_NPscript');
+    var message = <HTMLInputElement>document.getElementById('base_message');
     if (Number(NP.value) > 0 && Number(ALL_NP.value) <= 1) {
       facemode = "fun"
-      console.log("嬉しいよ")
     }
     if (Number(NP.value) < 0 && Number(ALL_NP.value) >= -1) {
       facemode = "sad"
-      console.log("悲しいな")
     }
     if (Number(ALL_NP.value) > 0) {
       posepass = '../static/pose/cats.csv'
@@ -206,6 +203,10 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     if (Number(ALL_NP.value) <= -3) {
       posepass = '../static/pose/suneru.csv'
+    }
+    if (message.value == '1') {
+      posepass = '../static/pose/ozigi.csv';
+      (<HTMLInputElement>document.getElementById('facecheckbool')).value = '0';
     }
 
     // AnimationClipの生成
