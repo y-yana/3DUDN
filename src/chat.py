@@ -10,7 +10,7 @@ def response(word,u_name,b_name,in_np):
 
     if in_np>=2 and word in suki:
         return f'わたしも{u_name}のこと好きだよ'
-    if in_np>=2 and word == 'かわいい'
+    if in_np>=2 and word == 'かわいい':
         return 'えへへ...うれしいな'
 
     
