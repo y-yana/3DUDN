@@ -16,13 +16,13 @@
 <div id="header">
     <!-- ロゴ画像 -->
     <img src="../static/images/logo.png">
-    <!-- 設定ボタン -->
-    <button id="setting"><span class="material-icons">settings</span></button>
     <!-- 名前変更フォーム -->
     <div id="renameArea" style="display: none;">
         <form id="renameForm" action="/rename" method="post" onsubmit="return false;">
+            <div id='renameInputFlex'>
             <input type="text" id="user_name" name="user_name" placeholder="Write Your Name">
             <input type="text" id="bot_name" name="bot_name" placeholder="Write Bot Name">
+            </div>
             <button id="rename" onclick="changeUserName()"><span class="material-icons">drive_file_rename_outline</span></button>
         </form>
     </div>
@@ -33,6 +33,8 @@
             <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
         </form>
     </div>
+    <!-- 設定ボタン -->
+    <button id="setting"><span class="material-icons">settings</span></button>
     <!-- 変数送信用(display:none) -->
     <button id="modelChange" style="display: none;"></button>
 </div>
@@ -66,7 +68,7 @@
 <script>
     // グローバル関数を定義
     var path = 'path!!'
-    
+
     // チャット機能
     function changeHandler(input_value) {
         const chatMessage = $(input_value).serialize();

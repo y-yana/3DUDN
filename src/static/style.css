@@ -535,6 +535,29 @@ template {
 #header img {
   width: 30%;
 }
+#header #renameArea #renameForm {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+#header #renameArea #renameForm #renameInputFlex {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#header #renameArea #renameForm #renameInputFlex input {
+  background-color: #ffffff;
+  width: 11rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 25px;
+  border: 2px solid #013E6A;
+}
+#header #renameArea #renameForm #rename {
+  width: fit-content;
+  height: fit-content;
+  color: #013E6A;
+}
 #header #setting {
   width: fit-content;
   height: fit-content;
