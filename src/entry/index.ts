@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // 初期値
   var modelPass = '../static/base_model/base.vrm';
   var posepass = '../static/pose/hellovrm.csv';
-  var facemode = "fun";
+  var facemode = "normal";
   var NP
   var ALL_NP
 
@@ -182,6 +182,9 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     if (Number(NP.value) > 0) {
       posepass = '../static/pose/anim3.csv'
+    }
+    if (Number(NP.value) < 0) {
+      posepass = '../static/pose/anim2.csv'
     }
     if (facemode == "fun") {
       vrm.blendShapeProxy.setValue(VRMSchema.BlendShapePresetName.Fun, 0.5)

@@ -110,8 +110,6 @@
             document.getElementById('NPscript').value = NP;
             const ALL_NP = JSON.parse(data.values).ALL_NP
             document.getElementById('ALL_NPscript').value = ALL_NP;
-            console.log("NP=" + NP)
-            console.log("ALL_NP=" + ALL_NP)
 
             // 受信メッセージの表示
             $("#chatLogs").append("<div class='chatMessage'><div class='chatLog'>" + message + "</div><span id = 'sendTime' >" + Hour + ": " + Min + "</span ></div>");
@@ -120,7 +118,8 @@
             const text = new SpeechSynthesisUtterance(message);
             speechSynthesis.speak(text);
 
-            if (NP != 0) {
+            if (NP > 0 || NP < 0) {
+                console.log("flagon")
                 document.getElementById('facecheckbool').value = '1';
             }
 
