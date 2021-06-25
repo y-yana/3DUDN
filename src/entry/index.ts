@@ -61,6 +61,7 @@ window.addEventListener("DOMContentLoaded", () => {
     canvas: <HTMLCanvasElement>document.querySelector('#canvas'),
     antialias: true,
     alpha: true,
+    preserveDrawingBuffer: true,
   })
   renderer.setSize(canvas.clientWidth, canvas.clientHeight)
   renderer.setPixelRatio(window.devicePixelRatio)

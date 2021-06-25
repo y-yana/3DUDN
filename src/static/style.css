@@ -758,6 +758,7 @@ template {
 }
 #mainArea #chatArea #chatSubmitForm #chatSubmitFormItem {
   width: fit-content;
+  max-width: fit-content;
   max-width: 18rem;
   display: flex;
   background-color: #ffffff;
