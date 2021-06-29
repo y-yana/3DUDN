@@ -116,7 +116,7 @@ eval("\nwindow.onload = function () {\n    var openingElement = document.getElem
   \*********************************/
 /***/ (() => {
 
-eval("\ndocument.getElementById('setting').onclick = function () {\n    var renameForm = document.getElementById('renameArea');\n    var modelUpForm = document.getElementById('modelChangeArea');\n    var renameStyle = renameForm.style.display;\n    var modelUpStyle = modelUpForm.style.display;\n    if (renameStyle == 'none' || modelUpStyle == 'none') {\n        renameForm.style.display = 'block';\n        modelUpForm.style.display = 'block';\n    }\n    else {\n        renameForm.style.display = 'none';\n        modelUpForm.style.display = 'none';\n    }\n};\n\n\n//# sourceURL=webpack:///./src/entry/js/setting.js?");
+eval("\ndocument.getElementById('setting').onclick = function () {\n    var renameForm = document.getElementById('renameArea');\n    var modelUpForm = document.getElementById('modelChangeArea');\n    var muteBtn = document.getElementById('muteBtn');\n    var renameStyle = renameForm.style.display;\n    var modelUpStyle = modelUpForm.style.display;\n    var muteBtnStyle = muteBtn.style.display;\n    if (renameStyle == 'none' || modelUpStyle == 'none' || muteBtnStyle == 'none') {\n        renameForm.style.display = 'block';\n        modelUpForm.style.display = 'block';\n        muteBtn.style.display = 'block';\n    }\n    else {\n        renameForm.style.display = 'none';\n        modelUpForm.style.display = 'none';\n        muteBtn.style.display = 'none';\n    }\n};\n\n\n//# sourceURL=webpack:///./src/entry/js/setting.js?");
 
 /***/ }),
 
