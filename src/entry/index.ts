@@ -79,11 +79,13 @@ window.addEventListener("DOMContentLoaded", () => {
   )
   camera.position.set(0, 1, 4)
 
-  // カメラコントーロールの設定
-  const controls = new OrbitControls(camera, renderer.domElement)
-  controls.target.set(0, 0.85, 0)
-  controls.screenSpacePanning = true
-  controls.update()
+  // カメラコントロールの設定
+  if (getWidth > 950) {
+    const controls = new OrbitControls(camera, renderer.domElement)
+    controls.target.set(0, 0.85, 0)
+    controls.screenSpacePanning = true
+    controls.update()
+  }
 
   // シーンの設定
   const scene = new THREE.Scene()
