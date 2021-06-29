@@ -35,8 +35,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 初期値
   var modelPass = '../static/base_model/base.vrm';
-  //var posepass = '../static/pose/suneru.csv';
-  var posepass = '../static/pose/hellovrm.csv';
+  var posepass = '../static/pose/zyanken.csv';
+  //var posepass = '../static/pose/hellovrm.csv';
   var facemode = "normal";
 
   $(document).on('click', '#modelChange', function () {
