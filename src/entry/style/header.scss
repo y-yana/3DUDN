@@ -64,6 +64,13 @@
       }
     }
   }
+  #muteBtn{
+    button{
+      width: fit-content;
+      height: fit-content;
+      color: $logo-main-color;
+    }
+  }
   #setting{
     width: fit-content;
     height: fit-content;
