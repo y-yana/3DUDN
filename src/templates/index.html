@@ -41,7 +41,7 @@
     </div>
     <!-- ミュートボタン -->
     <div id="muteBtn" style="display: none;">
-        <button id="mute"><span class="material-icons">volume_off</span></button>
+        <button id="unmute"><span class="material-icons">volume_up</span></button>
     </div>
     <!-- 設定ボタン -->
     <button id="setting"><span class="material-icons">settings</span></button>
@@ -85,6 +85,9 @@
     // グローバル関数を定義
     var path = 'path!!'
 
+    // 0のときは再生、1のときはミュート
+    var mute_num = 0
+
     // チャット機能
     function changeHandler(input_value) {
         const chatMessage = $(input_value).serialize();
@@ -104,9 +107,11 @@
             // 自動スクロール
             $('#chatArea').animate({ scrollTop: $('#chatArea')[0].scrollHeight }, 'fast');
 
-            // 返事の読み上げ
-            const text = new SpeechSynthesisUtterance(null_message);
-            speechSynthesis.speak(text);
+            if(mute_num == 0){
+                // 返事の読み上げ
+                const text = new SpeechSynthesisUtterance(null_message);
+                speechSynthesis.speak(text);
+            }
 
             // 関数抜ける
             return '';
@@ -146,8 +151,10 @@
             $('#chatArea').animate({ scrollTop: $('#chatArea')[0].scrollHeight }, 'fast');
 
             // 受信メッセージの読み上げ
-            const text = new SpeechSynthesisUtterance(message);
-            speechSynthesis.speak(text);
+            if (mute_num == 0) {
+                const text = new SpeechSynthesisUtterance(message);
+                speechSynthesis.speak(text);
+            }
 
             if (NP > 0 || NP < 0) {
                 document.getElementById('facecheckbool').value = '1';

@@ -16,11 +16,13 @@ document.getElementById('muteBtn').onclick = function () {
     newContent.setAttribute("class", "material-icons");
     var text = document.createTextNode("volume_up");
     newContent.appendChild(text);
+    mute_num = 0;
   } else {
     newElement.setAttribute("id", "mute");
     newContent.setAttribute("class", "material-icons");
     var text = document.createTextNode("volume_off");
     newContent.appendChild(text);
+    mute_num = 1;
   }
 
   // 要素を追加
