@@ -39,6 +39,10 @@
             <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
         </form>
     </div>
+    <!-- ミュートボタン -->
+    <div id="muteBtn" style="display: none;">
+        <button id="unmute"><span class="material-icons">volume_up</span></button>
+    </div>
     <!-- 設定ボタン -->
     <button id="setting"><span class="material-icons">settings</span></button>
     <!-- 変数送信用(display:none) -->
@@ -81,6 +85,9 @@
     // グローバル関数を定義
     var path = 'path!!'
 
+    // 0のときは再生、1のときはミュート
+    var mute_num = 0
+
     // チャット機能
     function changeHandler(input_value) {
         const chatMessage = $(input_value).serialize();
@@ -89,27 +96,35 @@
         var sendTime = new Date();
         var Hour = sendTime.getHours();
         var Min = sendTime.getMinutes();
+        Min = String(Min)
+
+        // 0〜9分なら頭に0を付ける
+        if(Min.length == 1){
+            Min = '0' + Min
+        }
 
         // 空白でsubmitした時の処理
         if (input_value.value == '') {
             var null_message = 'ちょっとよく聞こえなかったから、もう一回言ってほしいな〜'
 
             // 返事の表示
-            $("#chatLogs").append("<div id='chatTimeGet'><div id='getMessage' class='chatMessage'><div class='chatLog'>" + null_message + "</div></div><span id = 'sendTime' >" + Hour + ": " + Min + "</span ></div>");
+            $("#chatLogs").append("<div id='chatTimeGet'><div id='getMessage' class='chatMessage'><div class='chatLog'>" + null_message + "</div></div><span id = 'sendTime' >" + Hour + ":" + Min + "</span ></div>");
 
             // 自動スクロール
             $('#chatArea').animate({ scrollTop: $('#chatArea')[0].scrollHeight }, 'fast');
 
-            // 返事の読み上げ
-            const text = new SpeechSynthesisUtterance(null_message);
-            speechSynthesis.speak(text);
+            if(mute_num == 0){
+                // 返事の読み上げ
+                const text = new SpeechSynthesisUtterance(null_message);
+                speechSynthesis.speak(text);
+            }
 
             // 関数抜ける
             return '';
         };
 
         // 送信メッセージの表示
-        $("#chatLogs").append("<div id='chatTimeSend'><span id = 'sendTime' >" + Hour + ": " + Min + "</span ><div id='sendMessage' class='chatMessage'><div class='chatLog'>" + input_value.value + "</div></div></div>");
+        $("#chatLogs").append("<div id='chatTimeSend'><span id = 'sendTime' >" + Hour + ":" + Min + "</span ><div id='sendMessage' class='chatMessage'><div class='chatLog'>" + input_value.value + "</div></div></div>");
 
         // 自動スクロール
         $('#chatArea').animate({ scrollTop: $('#chatArea')[0].scrollHeight }, 'fast');
@@ -136,14 +151,16 @@
             document.getElementById('ALL_NPscript').value = ALL_NP;
 
             // 受信メッセージの表示
-            $("#chatLogs").append("<div id='chatTimeGet'><div id='getMessage' class='chatMessage'><div class='chatLog'>" + message + "</div></div><span id = 'sendTime' >" + Hour + ": " + Min + "</span ></div>");
+            $("#chatLogs").append("<div id='chatTimeGet'><div id='getMessage' class='chatMessage'><div class='chatLog'>" + message + "</div></div><span id = 'sendTime' >" + Hour + ":" + Min + "</span ></div>");
 
             // 自動スクロール
             $('#chatArea').animate({ scrollTop: $('#chatArea')[0].scrollHeight }, 'fast');
 
             // 受信メッセージの読み上げ
-            const text = new SpeechSynthesisUtterance(message);
-            speechSynthesis.speak(text);
+            if (mute_num == 0) {
+                const text = new SpeechSynthesisUtterance(message);
+                speechSynthesis.speak(text);
+            }
 
             if (NP > 0 || NP < 0) {
                 document.getElementById('facecheckbool').value = '1';

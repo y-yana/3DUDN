@@ -535,6 +535,7 @@ template {
 }
 #header img {
   width: 30%;
+  max-width: 20rem;
 }
 #header #renameArea #renameForm {
   display: flex;
@@ -587,6 +588,11 @@ template {
 #header #modelChangeArea #uploadForm #uploadBtn {
   color: #013E6A;
 }
+#header #muteBtn button {
+  width: fit-content;
+  height: fit-content;
+  color: #013E6A;
+}
 #header #setting {
   width: fit-content;
   height: fit-content;
@@ -605,6 +611,7 @@ template {
   }
   #header img {
     width: 60%;
+    max-width: 15rem;
   }
   #header #renameArea #renameForm {
     display: flex;
