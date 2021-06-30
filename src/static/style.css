@@ -535,6 +535,7 @@ template {
 }
 #header img {
   width: 30%;
+  max-width: 20rem;
 }
 #header #renameArea #renameForm {
   display: flex;
@@ -610,6 +611,7 @@ template {
   }
   #header img {
     width: 60%;
+    max-width: 15rem;
   }
   #header #renameArea #renameForm {
     display: flex;
