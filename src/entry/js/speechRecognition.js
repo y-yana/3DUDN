@@ -6,7 +6,13 @@ recognition.interimResults = true;
 
 let finalTranscript = '';
 
-$(document).on('click','#recStart_',function() {
+var recNow = document.getElementById('recNow');
+
+$(document).on('click', '#recStart_', function () {
+  // 点滅開始
+  recNow.style.display = 'block';
+  recNow.classList.add('recNow');
+
   // 録音開始ボタンの削除
   var recStartBtn = document.getElementById('recStart_');
   recStartBtn.style.display ="none";
@@ -22,7 +28,11 @@ $(document).on('click','#recStart_',function() {
   recognition.start();
 })
 
-$(document).on('click','#recStop_',function() {
+$(document).on('click', '#recStop_', function () {
+  // 点滅終了
+  recNow.classList.remove("recNow");
+  recNow.style.display = 'none';
+
   // 録音終了ボタンの削除
   var recStopBtn = document.getElementById('recStop_');
   recStopBtn.style.display ="none";
@@ -52,3 +62,10 @@ recognition.onresult = function (event) {
   }
   document.getElementById("chatMessage").value = finalTranscript + interimTranscript;
 }
+
+// 録音中表示の点滅
+$(function () {
+  setInterval(function () {
+    $('.recNow').fadeOut(1000, function () { $(this).fadeIn(1000) });
+  }, 2000);
+});

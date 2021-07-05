@@ -684,6 +684,9 @@ template {
   height: fit-content;
   color: #013E6A;
 }
+#btnArea #btnFlex #recNow {
+  color: #eb1a1a;
+}
 
 /* mobileここから */
 @media screen and (max-width: 950px) {
