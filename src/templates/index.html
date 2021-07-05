@@ -39,10 +39,6 @@
             <button id="uploadBtn" onclick="uploadFormSubmit(document.getElementById('upFile'))"><span class="material-icons">upload</span></button>
         </form>
     </div>
-    <!-- ミュートボタン -->
-    <div id="muteBtn" style="display: none;">
-        <button id="unmute"><span class="material-icons">volume_up</span></button>
-    </div>
     <!-- 設定ボタン -->
     <button id="setting"><span class="material-icons">settings</span></button>
     <!-- 変数送信用(display:none) -->
@@ -51,7 +47,12 @@
 
 <!-- 各種ボタンエリア -->
 <div id="btnArea">
+    <!-- スクリーンショットボタン -->
     <button id="downloadBtn"><span class="material-icons">photo_camera</span></button>
+    <!-- ミュートボタン -->
+    <div id="muteBtn">
+        <button id="unmute"><span class="material-icons">volume_up</span></button>
+    </div>
 </div>
 
 <!-- メイン機能 -->

@@ -4,4 +4,15 @@
     height: fit-content;
     color: $logo-main-color;
   }
+  #muteBtn{
+    button{
+      width: fit-content;
+      height: fit-content;
+      color: $logo-main-color;
+    }
+  }
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
 }
