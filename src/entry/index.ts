@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
   } else {
     // 比率計算(desktop)
     newWidth = Math.floor(getWidth * (2 / 5))
-    newHeight = Math.floor(getHeight * (4 / 5))
+    newHeight = Math.floor(getHeight * (5 / 7))
     // #chatAreaの高さを設定
     var chatArea = document.getElementById('chatArea')
     chatArea!.style.height = newHeight + 'px'

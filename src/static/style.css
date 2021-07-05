@@ -588,11 +588,6 @@ template {
 #header #modelChangeArea #uploadForm #uploadBtn {
   color: #013E6A;
 }
-#header #muteBtn button {
-  width: fit-content;
-  height: fit-content;
-  color: #013E6A;
-}
 #header #setting {
   width: fit-content;
   height: fit-content;
@@ -674,6 +669,28 @@ template {
   }
 }
 /* mobileここまで */
+#btnArea {
+  width: 100%;
+  padding: 1rem 4rem;
+}
+#btnArea #btnFlex {
+  width: fit-content;
+  display: flex;
+  gap: 2rem;
+  margin: 0 0 0 auto;
+}
+#btnArea #btnFlex .iconBtn {
+  width: fit-content;
+  height: fit-content;
+  color: #013E6A;
+}
+
+/* mobileここから */
+@media screen and (max-width: 950px) {
+  #btnArea {
+    padding: 1.5rem 2rem;
+  }
+}
 #mainArea {
   width: fit-content;
   height: fit-content;
