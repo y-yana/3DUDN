@@ -1,11 +1,12 @@
 #btnArea{
-  #downloadBtn{
+  width: 100%;
+  padding: 1rem 4rem;
+  #btnFlex{
     width: fit-content;
-    height: fit-content;
-    color: $logo-main-color;
-  }
-  #muteBtn{
-    button{
+    display: flex;
+    gap: 2rem;
+    margin: 0 0 0 auto;
+    .iconBtn{
       width: fit-content;
       height: fit-content;
       color: $logo-main-color;
@@ -15,4 +16,7 @@
 
 /* mobileここから */
 @media screen and (max-width: 950px) {
+  #btnArea{
+    padding: 1.5rem 2rem;
+  }
 }
