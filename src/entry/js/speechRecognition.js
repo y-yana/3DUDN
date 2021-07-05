@@ -10,6 +10,7 @@ var recNow = document.getElementById('recNow');
 
 $(document).on('click', '#recStart_', function () {
   // 点滅開始
+  recNow.style.display = 'block';
   recNow.classList.add('recNow');
 
   // 録音開始ボタンの削除
@@ -30,6 +31,7 @@ $(document).on('click', '#recStart_', function () {
 $(document).on('click', '#recStop_', function () {
   // 点滅終了
   recNow.classList.remove("recNow");
+  recNow.style.display = 'none';
 
   // 録音終了ボタンの削除
   var recStopBtn = document.getElementById('recStop_');
