@@ -102,6 +102,11 @@
         display: flex;
         align-items: center;
       }
+      .recordBtn{
+        span{
+          color: $logo-main-color;
+        }
+      }
       #chatSubmitBtn{
         color: $icon-submit-true;
       }

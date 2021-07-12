@@ -800,6 +800,9 @@ template {
   display: flex;
   align-items: center;
 }
+#mainArea #chatArea #chatSubmitForm .recordBtn span {
+  color: #013E6A;
+}
 #mainArea #chatArea #chatSubmitForm #chatSubmitBtn {
   color: #0059be;
 }
