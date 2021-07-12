@@ -796,6 +796,13 @@ template {
 #mainArea #chatArea #chatSubmitForm #chatSubmitFormItem #chatMessage {
   width: 15rem;
 }
+#mainArea #chatArea #chatSubmitForm .chatBtn {
+  display: flex;
+  align-items: center;
+}
+#mainArea #chatArea #chatSubmitForm .recordBtn span {
+  color: #013E6A;
+}
 #mainArea #chatArea #chatSubmitForm #chatSubmitBtn {
   color: #0059be;
 }
