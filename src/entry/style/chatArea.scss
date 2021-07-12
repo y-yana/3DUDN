@@ -98,6 +98,10 @@
           width: 15rem;
         }
       }
+      .chatBtn{
+        display: flex;
+        align-items: center;
+      }
       #chatSubmitBtn{
         color: $icon-submit-true;
       }
