@@ -20,7 +20,7 @@ https://uroidchat.herokuapp.com/<br>
 ## &#x1f4bb; 使用技術
 - HTML
 - CSS ( Sass )
-- JavaScript ( jQuery / Three.js )
+- JavaScript ( jQuery / Three.js / Node.js)
 - TypeScript
 - Python ( Flask )
 - webpack
