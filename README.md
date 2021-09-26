@@ -1,5 +1,12 @@
 # URoidChat &#x1f970; &#x1f4ac;
 自分好みのアバターとチャットできるAIチャットアプリです！<br><br>
+
+# 注意個のリポジトリは旧バージョンです
+技育展のリポジトリは以下です！
+
+https://github.com/y-yana/URoidChat
+
+
 <image src='./src/static/images/OGP.png'>
 <br><br>
 
